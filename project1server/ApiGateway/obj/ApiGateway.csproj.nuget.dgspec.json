@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\source\\project1server\\ApiGateway\\ApiGateway.csproj": {}
+    "D:\\project1\\project1server\\ApiGateway\\ApiGateway.csproj": {}
   },
   "projects": {
-    "D:\\source\\project1server\\ApiGateway\\ApiGateway.csproj": {
+    "D:\\project1\\project1server\\ApiGateway\\ApiGateway.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\source\\project1server\\ApiGateway\\ApiGateway.csproj",
+        "projectUniqueName": "D:\\project1\\project1server\\ApiGateway\\ApiGateway.csproj",
         "projectName": "ApiGateway",
-        "projectPath": "D:\\source\\project1server\\ApiGateway\\ApiGateway.csproj",
+        "projectPath": "D:\\project1\\project1server\\ApiGateway\\ApiGateway.csproj",
         "packagesPath": "C:\\Users\\android17x\\.nuget\\packages\\",
-        "outputPath": "D:\\source\\project1server\\ApiGateway\\obj\\",
+        "outputPath": "D:\\project1\\project1server\\ApiGateway\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\android17x\\AppData\\Roaming\\NuGet\\NuGet.Config",

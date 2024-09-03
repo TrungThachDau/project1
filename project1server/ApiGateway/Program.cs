@@ -10,6 +10,16 @@ namespace ApiGateway
             IConfiguration configuration = new ConfigurationBuilder()
                 .AddJsonFile("ocelot.json")
                 .Build();
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAllOrigins",
+                    policyBuilder => policyBuilder.AllowAnyHeader()
+                        .AllowAnyMethod()
+                        .AllowAnyOrigin()
+                        //.AllowCredentials()
+                        .SetIsOriginAllowed(_ => true)
+                );
+            });
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
@@ -22,7 +32,7 @@ namespace ApiGateway
             }
 
             app.UseHttpsRedirection();
-
+            app.UseCors("AllowAllOrigins");
             app.UseOcelot();
             app.UseAuthorization();
             app.MapControllers();

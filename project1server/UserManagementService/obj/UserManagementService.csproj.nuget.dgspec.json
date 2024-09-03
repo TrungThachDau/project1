@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\source\\project1server\\UserManagementService\\UserManagementService.csproj": {}
+    "D:\\project1\\project1server\\UserManagementService\\UserManagementService.csproj": {}
   },
   "projects": {
-    "D:\\source\\project1server\\UserManagementService\\UserManagementService.csproj": {
+    "D:\\project1\\project1server\\UserManagementService\\UserManagementService.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\source\\project1server\\UserManagementService\\UserManagementService.csproj",
+        "projectUniqueName": "D:\\project1\\project1server\\UserManagementService\\UserManagementService.csproj",
         "projectName": "UserManagementService",
-        "projectPath": "D:\\source\\project1server\\UserManagementService\\UserManagementService.csproj",
+        "projectPath": "D:\\project1\\project1server\\UserManagementService\\UserManagementService.csproj",
         "packagesPath": "C:\\Users\\android17x\\.nuget\\packages\\",
-        "outputPath": "D:\\source\\project1server\\UserManagementService\\obj\\",
+        "outputPath": "D:\\project1\\project1server\\UserManagementService\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\android17x\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -46,13 +46,47 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "FirebaseAdmin": {
+              "target": "Package",
+              "version": "[3.0.0, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[8.0.8, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.8, )"
+            },
+            "Microsoft.EntityFrameworkCore.Relational": {
+              "target": "Package",
+              "version": "[8.0.8, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[8.0.8, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.8, )"
+            },
             "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": {
               "target": "Package",
               "version": "[1.21.0, )"
             },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[8.0.4, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
-              "version": "[6.4.0, )"
+              "version": "[6.7.3, )"
             }
           },
           "imports": [
