@@ -10,6 +10,8 @@ namespace UserManagementService.Data
         }
         public DbSet<UserModel> Users { get; set; }
         public DbSet<RoleModel> Roles { get; set; }
+        public DbSet<PermissionModel> Permissions { get; set; }
+        public DbSet<RolePermissionModel> RolePermissions { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -18,6 +20,16 @@ namespace UserManagementService.Data
                 .HasOne(p => p.role)
                 .WithMany()
                 .HasForeignKey(p => p.id_role);
+
+
+            _ = modelBuilder.Entity<RolePermissionModel>()
+                .HasOne(p => p.role)
+                .WithMany()
+                .HasForeignKey(p => p.id_role);
+            _ = modelBuilder.Entity<RolePermissionModel>()
+                .HasOne(p => p.permission)
+                .WithMany()
+                .HasForeignKey(p => p.id_permission);
 
         }
     }

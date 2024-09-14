@@ -5,18 +5,45 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatMenu, MatMenuItem, MatMenuTrigger} from "@angular/material/menu";
 import {signOut} from "@angular/fire/auth";
 import {AuthService} from "../../services/auth.service";
-import {Router} from "@angular/router";
+import {Router, RouterLink} from "@angular/router";
+import {MatMenuModule} from "@angular/material/menu";
+import {MatSidenavModule} from "@angular/material/sidenav";
+import { MatSidenavContainer } from '@angular/material/sidenav';
+import {CommonModule} from "@angular/common";
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [MatToolbarModule, MatButtonModule, MatIconModule, MatMenu, MatMenuTrigger, MatMenuItem],
+  imports: [CommonModule, MatToolbarModule, MatButtonModule, MatIconModule, MatMenu, MatMenuTrigger, MatMenuItem, MatSidenavModule, MatSidenavContainer, RouterLink],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss'
 })
 export class NavbarComponent {
-  constructor(private authService: AuthService, private router: Router) {}
-  signOut(){
+  permissions: string[] = [];
+  navButton = [
+
+    { name: 'Quản lý người dùng', permission: 'ManagementUser', path: '/userManagement' },
+    { name: 'Phân quyền', permission: 'Function2', path: '/productManagement' }
+  ];
+
+  constructor(private authService: AuthService, private router: Router) {
+    const storedPermissions = sessionStorage.getItem('permissions');
+
+    if (storedPermissions) {
+      // Chuyển đổi chuỗi JSON thành mảng nếu tồn tại
+      this.permissions = JSON.parse(storedPermissions);
+    }
+  }
+
+
+  // Hàm đăng xuất
+  signOut() {
     this.authService.signOut();
     this.router.navigate(['/signIn']);
   }
+
+  // Hàm kiểm tra quyền
+  hasPermission(permission: string): boolean {
+    return this.permissions.includes(permission);
+  }
 }
+

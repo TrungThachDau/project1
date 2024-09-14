@@ -3,7 +3,6 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace UserManagementService.Models
 {
     [Table("role", Schema = "dbo")]
-
     public class RoleModel
     {
         [Key]

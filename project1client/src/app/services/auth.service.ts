@@ -44,6 +44,9 @@ export class AuthService {
   verifyToken(idToken: string): Observable<any> {
     return this.http.post(`${this.apiUrl}/Auth/verify-token`, { IdToken: idToken }, this.httpOptions)
   }
+  getPermission(uid:string): Observable<any>{
+    return this.http.get(`${this.apiUrl}/Auth/get-permission/${uid}`, this.httpOptions)
+  }
   async resetPassword(email:string){
     try{
       return await sendPasswordResetEmail(this.auth, email);

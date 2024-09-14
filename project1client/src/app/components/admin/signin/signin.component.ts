@@ -54,6 +54,17 @@ export class SigninComponent implements OnInit{
         if (response.uid) {
           sessionStorage.setItem('authToken', IdToken);
           sessionStorage.setItem('uid', response.uid);
+          //Lay quyen luu vao session
+          const permission: any = await this.authService.getPermission(response.uid).toPromise();
+          if (permission) {
+            try {
+
+              sessionStorage.setItem('permissions', JSON.stringify(permission));
+              console.log(sessionStorage.getItem('permissions'));
+            } catch (error) {
+              console.error(error);
+            }
+          }
           this.router.navigate(['/dashboard']);
         } else {
           this.handleError('Token không hợp lệ');

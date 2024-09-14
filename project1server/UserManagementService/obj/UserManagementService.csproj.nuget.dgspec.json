@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\project1\\project1server\\UserManagementService\\UserManagementService.csproj": {}
+    "D:\\project1\\project1\\project1server\\UserManagementService\\UserManagementService.csproj": {}
   },
   "projects": {
-    "D:\\project1\\project1server\\UserManagementService\\UserManagementService.csproj": {
+    "D:\\project1\\project1\\project1server\\UserManagementService\\UserManagementService.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\project1\\project1server\\UserManagementService\\UserManagementService.csproj",
+        "projectUniqueName": "D:\\project1\\project1\\project1server\\UserManagementService\\UserManagementService.csproj",
         "projectName": "UserManagementService",
-        "projectPath": "D:\\project1\\project1server\\UserManagementService\\UserManagementService.csproj",
+        "projectPath": "D:\\project1\\project1\\project1server\\UserManagementService\\UserManagementService.csproj",
         "packagesPath": "C:\\Users\\android17x\\.nuget\\packages\\",
-        "outputPath": "D:\\project1\\project1server\\UserManagementService\\obj\\",
+        "outputPath": "D:\\project1\\project1\\project1server\\UserManagementService\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\android17x\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -78,7 +78,7 @@
             },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
-              "version": "[8.0.4, )"
+              "version": "[8.0.5, )"
             },
             "Newtonsoft.Json": {
               "target": "Package",
