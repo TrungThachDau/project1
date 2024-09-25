@@ -25,7 +25,7 @@ namespace UserManagementService.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<UserModel>>> GetUsers()
         {
-            return await _context.Users.ToListAsync();
+            return await _context.Users.Include(p=>p.role).ToListAsync();
         }
 
         // GET: api/User/5

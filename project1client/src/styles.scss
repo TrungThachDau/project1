@@ -1,4 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
-
+@use '@angular/material' as mat;
+@include mat.core();
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+
+
+
+// Áp dụng màu custom cho `mat-toolbar`
+.mat-toolbar {
+  background-color: #d7e3ff !important;
+  color: black; /* Hoặc tùy chỉnh màu chữ */
+}
+
+.active-button {
+  background-color: #b2cbf4 !important; /* Đổi màu nền của button */
+            /* Đổi màu chữ thành trắng */
+}
+/* Thay đổi màu chữ của tất cả các mat-button */
+
+/* Đặt màu chữ cho tất cả các nút */
+
+

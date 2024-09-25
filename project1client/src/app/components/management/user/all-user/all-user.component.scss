@@ -1,0 +1,60 @@
+.container-fluid {
+  display: flex;
+  height: 80vh; /* Chiều cao của container */
+  box-sizing: border-box; /* Đảm bảo padding và border không làm thay đổi kích thước */
+}
+
+.list-section {
+  flex: 0 0 20%; /* Chiếm 30% chiều rộng của container */
+  padding-left: 10px; /* Xóa padding */
+  padding-right:10px;
+  padding-top:5px;
+  border-right: 1px solid #ccc; /* Viền bên phải của phần danh sách */
+  overflow-y: auto; /* Thêm thanh cuộn nếu nội dung dài hơn chiều cao của phần */
+  box-sizing: border-box; /* Đảm bảo padding và border không làm thay đổi kích thước */
+}
+
+.table-section {
+  padding-top:15px;
+  padding-left:15px;
+  width: 100%;
+  flex: 0 0 80%; /* Chiếm 70% chiều rộng của container */
+
+  overflow-y: auto; /* Thêm thanh cuộn nếu nội dung dài hơn chiều cao của phần */
+  box-sizing: border-box; /* Đảm bảo padding và border không làm thay đổi kích thước */
+}
+.table {
+  width: 100%; /* Đảm bảo bảng chiếm toàn bộ chiều rộng của phần chứa nó */
+  margin: 20px 0; /* Thêm khoảng cách phía trên và dưới của bảng */
+  border-collapse: collapse; /* Làm cho các viền bảng không bị gấp chồng lên nhau */
+}
+
+.table th, .table td {
+  text-align: left; /* Canh chỉnh văn bản sang bên trái */
+  padding: 12px; /* Thêm khoảng cách xung quanh nội dung ô */
+}
+
+.table thead th {
+  background-color: #f8f9fa; /* Màu nền cho tiêu đề cột */
+  font-weight: bold; /* Định dạng chữ đậm cho tiêu đề */
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: #f9f9f9; /* Màu nền cho các hàng chẵn */
+}
+
+.table-hover tbody tr:hover {
+  background-color: #f1f1f1; /* Màu nền cho hàng khi hover */
+}
+
+.table-bordered {
+  border: 1px solid #dee2e6; /* Thêm viền cho bảng */
+}
+
+.table-bordered th, .table-bordered td {
+  border: 1px solid #dee2e6; /* Thêm viền cho các ô */
+}
+.uid-column {
+  width: 10% !important; /* Chiều rộng cột UID */
+  text-align: center; /* Canh giữa nội dung trong cột */
+}

@@ -1,13 +1,14 @@
 import { inject, Injectable } from '@angular/core';
-import {Auth, sendPasswordResetEmail, signInWithEmailAndPassword, signOut, validatePassword} from "@angular/fire/auth";
+import {Auth, createUserWithEmailAndPassword, sendPasswordResetEmail, signInWithEmailAndPassword, signOut, validatePassword} from "@angular/fire/auth";
 import {catchError, Observable, throwError} from 'rxjs';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
+import {environment} from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'https://localhost:7278/api';
+  private apiUrl = environment.backendUrl;
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -23,14 +24,25 @@ export class AuthService {
     if (!email || !password) {
       return Promise.reject('Email and password must not be null');
     }
-
     try {
       return await signInWithEmailAndPassword(this.auth, email, password);
     } catch (error) {
       return Promise.reject(error);
     }
   }
-
+  async signUp(email: string, password: string): Promise<any> {
+    if (!email || !password) {
+      return Promise.reject('Email and password must not be null');
+    } else {
+      try {
+        // Dùng createUserWithEmailAndPassword để đăng ký tài khoản mới
+        return await createUserWithEmailAndPassword(this.auth, email, password);
+      } catch (error) {
+        return Promise.reject(error);
+      }
+    }
+  }
+  
   async signOut() {
     try {
       sessionStorage.removeItem('authToken');

@@ -1,3 +1,8 @@
 .example-spacer {
   flex: 1 1 auto;
 }
+
+/* Nếu bạn muốn thay đổi màu khi button được hover */
+::ng-deep .mat-button {
+  color: #ff5722 !important; /* Màu chữ bạn muốn */
+}

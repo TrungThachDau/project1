@@ -5,7 +5,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatMenu, MatMenuItem, MatMenuTrigger} from "@angular/material/menu";
 import {signOut} from "@angular/fire/auth";
 import {AuthService} from "../../services/auth.service";
-import {Router, RouterLink} from "@angular/router";
+import {Router, RouterLink, RouterLinkActive} from "@angular/router";
 import {MatMenuModule} from "@angular/material/menu";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import { MatSidenavContainer } from '@angular/material/sidenav';
@@ -13,7 +13,7 @@ import {CommonModule} from "@angular/common";
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [CommonModule, MatToolbarModule, MatButtonModule, MatIconModule, MatMenu, MatMenuTrigger, MatMenuItem, MatSidenavModule, MatSidenavContainer, RouterLink],
+  imports: [CommonModule, MatToolbarModule, MatButtonModule, MatIconModule, MatMenu, MatMenuTrigger, MatMenuItem, MatSidenavModule, MatSidenavContainer, RouterLink, RouterLinkActive],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss'
 })
@@ -21,7 +21,7 @@ export class NavbarComponent {
   permissions: string[] = [];
   navButton = [
 
-    { name: 'Quản lý người dùng', permission: 'ManagementUser', path: '/userManagement' },
+    { name: 'Quản lý người dùng', permission: 'USER_MANAGEMENT', path: '/all-user' },
     { name: 'Phân quyền', permission: 'Function2', path: '/productManagement' }
   ];
 
