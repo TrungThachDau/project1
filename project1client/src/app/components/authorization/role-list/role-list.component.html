@@ -1,0 +1,26 @@
+<app-navbar></app-navbar>
+<div class="container-fluid">
+  <div class="list-section">
+    <app-authorization-list-section></app-authorization-list-section>
+  </div>
+  <div class="table-section">
+    <h4>Quản lý vai trò</h4>
+    <table class="table table-striped table-hover table-bordered">
+      <thead>
+      <tr>
+        <th scope="col" class="uid-column">#</th>
+        <th scope="col">Tên vai trò</th>
+
+      </tr>
+      </thead>
+      <tbody>
+            <tr *ngFor="let role of roles">
+              <td class="uid-column">{{role.id_role}}</td>
+              <td>{{role.name_role}}</td>
+              <td>Xóa | <a routerLink="/edit-user/{{role.id_user}}">Sửa</a></td>
+            </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>

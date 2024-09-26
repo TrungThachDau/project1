@@ -5,6 +5,7 @@ import {MatList, MatListItem} from "@angular/material/list";
 import {UserListSectionComponent} from "../user-list-section/user-list-section.component";
 import {UserService} from "../../../../services/user.service";
 import {CommonModule} from "@angular/common";
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-all-user',
@@ -20,7 +21,8 @@ import {CommonModule} from "@angular/common";
     MatList,
     MatListItem,
     UserListSectionComponent,
-    CommonModule
+    CommonModule,
+    RouterLink
   ],
   templateUrl: './all-user.component.html',
   styleUrl: './all-user.component.scss'

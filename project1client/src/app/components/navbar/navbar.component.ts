@@ -21,7 +21,7 @@ export class NavbarComponent {
   permissions: string[] = [];
   navButton = [
 
-    { name: 'Quản lý người dùng', permission: 'USER_MANAGEMENT', path: '/all-user' },
+    { name: 'Quản lý người dùng', permission: 'USER_MANAGEMENT', path: '/user-management' },
     { name: 'Phân quyền', permission: 'AUTHORIZATION', path: '/authorization' }
   ];
 

@@ -14,44 +14,21 @@
   box-sizing: border-box; /* Đảm bảo padding và border không làm thay đổi kích thước */
 }
 
-.authorization-section {
-  display: flex;
+.form-section {
+  padding-top:15px;
+  padding-left:15px;
+  width: 100%;
   flex: 0 0 80%; /* Chiếm 70% chiều rộng của container */
 
+  overflow-y: auto; /* Thêm thanh cuộn nếu nội dung dài hơn chiều cao của phần */
   box-sizing: border-box; /* Đảm bảo padding và border không làm thay đổi kích thước */
 }
-
-.example-full-width {
-  width: 100%;
-}
-.role-section{
-  border: 1px solid #ccc;
-  flex: 0 0 50%;
-  display: flex;
-  justify-content: left; /* Căn ngang */
-  align-items: center; /* Căn dọc */
-}
-.permission-section{
-  border: 1px solid #ccc;
-  flex: 0 0 50%;
-  display: flex;
-  justify-content: left; /* Căn ngang */
-  align-items: center; /* Căn dọc */
-  overflow-y: auto;
-}
-.example-section{
-  margin: 12px 0;
-  justify-content: center; /* Căn ngang */
-  align-items: center; /* Căn dọc */
-}
-.example-section {
-  margin: 12px 0;
-}
-.example-full-width{
-  width: 100%;
-}
-.example-form {
+.add-user-form {
   min-width: 150px;
   max-width: 500px;
+  width: 100%;
+}
+
+.add-user-full-width {
   width: 100%;
 }

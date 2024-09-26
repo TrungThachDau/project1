@@ -1,9 +1,9 @@
 <div class="list-group">
-  <a routerLink="/all-user" routerLinkActive="active-button" class="list-group-item list-group-item-action" aria-current="true">
+  <a routerLink="/user-management" [routerLinkActiveOptions]="{ exact: true }" routerLinkActive="active-button" class="list-group-item list-group-item-action" aria-current="true">
     Tất cả người dùng
   </a>
-  <a routerLink="/add-user" routerLinkActive="active-button" class="list-group-item list-group-item-action">Thêm người dùng</a>
-  <a href="#" class="list-group-item list-group-item-action">Phân quyền</a>
+  <a routerLink="/user-management/add" routerLinkActive="active-button" class="list-group-item list-group-item-action">Thêm người dùng</a>
+  <a routerLink="/authorization" class="list-group-item list-group-item-action">Phân quyền</a>
   <a href="#" class="list-group-item list-group-item-action">A fourth link item</a>
   <a class="list-group-item list-group-item-action disabled" aria-disabled="true">A disabled link item</a>
 </div>

@@ -24,7 +24,20 @@ export class UserService {
         catchError(this.errorHandler)  // Xử lý lỗi
       );
   }
-  
+
+  getUserById(id: string): Observable<any> {
+    return this.httpClient.get<any>(`${this.apiUrl}/User/${id}`, this.httpOptions)
+      .pipe(
+        catchError(this.errorHandler)  // Xử lý lỗi
+      );
+  }
+  putUser(id: string, data: any): Observable<any> {
+    return this.httpClient.put<any>(`${this.apiUrl}/User/${id}`, data, this.httpOptions)
+      .pipe(
+        catchError(this.errorHandler)  // Xử lý lỗi
+      );
+  }
+
   errorHandler(error: HttpErrorResponse): Observable<never> {
     let errorMessage = '';
 

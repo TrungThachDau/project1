@@ -11,7 +11,7 @@
                 mat-button
                 routerLink="{{ btn.path }}"
                 routerLinkActive="active-button"
-                [routerLinkActiveOptions]="{ exact: true }"
+                [routerLinkActiveOptions]="{ exact: false }"
                 [disabled]="!hasPermission(btn.permission)">
           {{ btn.name }}
         </button>
@@ -25,6 +25,7 @@
     </button>
 
     <mat-menu #menu="matMenu">
+      <button mat-menu-item></button>
       <button mat-menu-item routerLink="/changepassword" routerLinkActive="active-button">Đổi mật khẩu</button>
       <button mat-menu-item>...</button>
       <button mat-menu-item (click)="signOut()">Đăng xuất</button>

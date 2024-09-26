@@ -1,1 +1,50 @@
 <app-navbar></app-navbar>
+<div class="container-fluid">
+  <div class="list-section">
+    <app-authorization-list-section></app-authorization-list-section>
+  </div>
+  <div class="authorization-section">
+    <div class="role-section">
+      <form class="example-form">
+        <mat-form-field class="example-full-width">
+          <mat-label>Vai trò</mat-label>
+          <input type="text"
+                 placeholder="Chọn một"
+                 aria-label="Vai trò"
+                 matInput
+                 [formControl]="myControl"
+                 [matAutocomplete]="auto">
+          <mat-autocomplete
+            autoActiveFirstOption
+            #auto="matAutocomplete"
+            (optionSelected)="onRoleSelected($event)">
+            <mat-option *ngFor="let role of filteredOptions | async" [value]="role.id_role">
+              {{ role.name_role }}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+
+
+      </form>
+      <a style="margin-left: 10px">-></a>
+    </div>
+    <div class="permission-section">
+      <section class="example-section">
+        <p><mat-checkbox >Pepperoni</mat-checkbox></p>
+        <p><mat-checkbox >Extra Cheese</mat-checkbox></p>
+        <p><mat-checkbox >Mushroom</mat-checkbox></p>
+        <p><mat-checkbox >Mushroom</mat-checkbox></p>
+        <p><mat-checkbox >Mushroom</mat-checkbox></p>
+        <p><mat-checkbox >Mushroom</mat-checkbox></p>
+        <p><mat-checkbox >Mushroom</mat-checkbox></p>
+        <p><mat-checkbox >Mushroom</mat-checkbox></p>
+        <p><mat-checkbox >Mushroom</mat-checkbox></p>
+        <p><mat-checkbox >Mushroom</mat-checkbox></p>
+        <p><mat-checkbox >Mushroom</mat-checkbox></p>
+        <p><mat-checkbox >Mushroom</mat-checkbox></p>
+        <p><mat-checkbox >Mushroom</mat-checkbox></p>
+        <p><mat-checkbox >Mushroom</mat-checkbox></p>
+      </section>
+    </div>
+  </div>
+</div>
