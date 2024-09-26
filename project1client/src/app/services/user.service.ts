@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {environment} from "../../environments/environment";
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import {catchError, Observable, throwError} from "rxjs";
 
 @Injectable({
@@ -14,18 +14,32 @@ export class UserService {
   constructor(private httpClient: HttpClient) { }
   getAll(): Observable<any[]> {  // Không sử dụng model
     return this.httpClient.get<any[]>(`${this.apiUrl}/User`, this.httpOptions)
-      .pipe(catchError(this.errorHandler));
+      .pipe(
+        catchError(this.errorHandler)  // Xử lý lỗi
+      );
   }
-  errorHandler(error: any): Observable<never> {
+  postUser(data: any): Observable<any> {
+    return this.httpClient.post<any>(`${this.apiUrl}/User`, data, this.httpOptions)
+      .pipe(
+        catchError(this.errorHandler)  // Xử lý lỗi
+      );
+  }
+  
+  errorHandler(error: HttpErrorResponse): Observable<never> {
     let errorMessage = '';
+
     if (error.error instanceof ErrorEvent) {
-      // Get client-side error
-      errorMessage = error.error.message;
+      // Lỗi phía client
+      errorMessage = `Client Error: ${error.error.message}`;
     } else {
-      // Get server-side error
-      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+      // Lỗi phía server
+      errorMessage = `Server Error Code: ${error.status}\nMessage: ${error.message}`;
     }
+
+    // Ghi log lỗi (hoặc bạn có thể gửi lỗi tới server để theo dõi)
     console.error(errorMessage);
-    return throwError(errorMessage);
+
+    // Trả về Observable lỗi
+    return throwError(() => new Error(errorMessage));
   }
 }

@@ -3,7 +3,7 @@ import {NavbarComponent} from "../../../navbar/navbar.component";
 import {UserListSectionComponent} from "../user-list-section/user-list-section.component";
 import {MatError, MatFormField, MatFormFieldModule, MatLabel} from "@angular/material/form-field";
 import {MatIcon, MatIconModule} from "@angular/material/icon";
-import {FormControl, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
+import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
 import {MatInput} from "@angular/material/input";
 import {MatButton, MatIconButton} from "@angular/material/button";
 import {CommonModule} from "@angular/common";
@@ -20,6 +20,7 @@ import {
   MatDialogTitle
 } from "@angular/material/dialog";
 import {DialogAddUserSuccessfulComponent} from "./dialog-add-user-successful/dialog-add-user-successful.component";
+import { UserService } from '../../../../services/user.service';
 
 @Component({
   selector: 'app-add-user',
@@ -51,16 +52,22 @@ import {DialogAddUserSuccessfulComponent} from "./dialog-add-user-successful/dia
   styleUrls: ['./add-user.component.scss']
 })
 export class AddUserComponent implements OnInit {
+  addUserForm = new FormGroup({
+    email: new FormControl('',[Validators.required, Validators.email]), 
+    name: new FormControl('', [Validators.required]),
+    phone: new FormControl(''),
+    address: new FormControl(''),
+    role: new FormControl('', [Validators.required])
+
+  });
+
   emailFormControl = new FormControl('', [Validators.required, Validators.email]);
   selectedValue: any;
-  roles: any[] = []
-  email: string = '';
-  phone: string = '';
-  address: string = '';
-  name: string = '';
+  roles: any[] = [];
   password = this.generatePassword();
+  
 
-  constructor(private authService: AuthService, private roleService: RoleService,public dialog: MatDialog) {
+  constructor(private userService: UserService,private authService: AuthService, private roleService: RoleService,public dialog: MatDialog) {
   }
 
   ngOnInit(): void {
@@ -79,22 +86,43 @@ export class AddUserComponent implements OnInit {
   async addUser() {
     try {
       // Gọi API đăng ký với authService
-      await this.authService.signUp(this.email, this.password);
+      const email = this.addUserForm.value.email as string;
+      const response = await this.authService.signUp(email, this.password);
+      console.log('User created successfully:', response.user.uid);
+      const userData = {
+        id_user: response.user.uid,
+        name: this.addUserForm.value.name,
+        email: this.addUserForm.value.email,
+        phone: this.addUserForm.value.phone,
+        address: this.addUserForm.value.address,
+        id_role: this.addUserForm.value.role
+      };
   
-      // Mở dialog khi đăng ký thành công
-      this.dialog.open(DialogAddUserSuccessfulComponent, {
-        data: { username: this.email } // Chỉ gửi thông tin không nhạy cảm
+      // Gửi dữ liệu người dùng tới server
+      this.userService.postUser(userData).subscribe({
+        next: (response) => {
+          console.log('User created successfully:', response);
+          
+          // Mở dialog khi đăng ký thành công
+          this.dialog.open(DialogAddUserSuccessfulComponent, {
+            data: { username: this.addUserForm.value.email, password: this.password } // Chỉ gửi thông tin không nhạy cảm
+          });
+        },
+        error: (error) => {
+          console.error('Error creating user:', error);
+          // Hiển thị thông báo lỗi cho người dùng, ví dụ:
+          // this.snackBar.open('Error creating user', 'Close', { duration: 3000 });
+        }
       });
     } catch (e) {
       // Xử lý lỗi nếu có và thông báo cho người dùng
       console.error('Đăng ký thất bại:', e);
       // Hiển thị thông báo lỗi cho người dùng, ví dụ:
-      ;
+      // this.snackBar.open('Đăng ký thất bại, vui lòng thử lại', 'Close', { duration: 3000 });
     }
   }
   
-
-
+  
   private generatePassword() {
     const length = 8;
     let result = '';

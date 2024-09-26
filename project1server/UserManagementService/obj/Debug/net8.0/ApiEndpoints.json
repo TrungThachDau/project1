@@ -198,7 +198,7 @@
   },
   {
     "ContainingType": "UserManagementService.Controllers.UserController",
-    "Method": "PostUserModel",
+    "Method": "PostUser",
     "RelativePath": "api/User",
     "HttpMethod": "POST",
     "IsController": true,
@@ -224,7 +224,7 @@
   },
   {
     "ContainingType": "UserManagementService.Controllers.UserController",
-    "Method": "GetUserModel",
+    "Method": "GetUser",
     "RelativePath": "api/User/{id}",
     "HttpMethod": "GET",
     "IsController": true,

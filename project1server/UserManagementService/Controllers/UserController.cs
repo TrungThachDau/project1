@@ -30,7 +30,7 @@ namespace UserManagementService.Controllers
 
         // GET: api/User/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<UserModel>> GetUserModel(string id)
+        public async Task<ActionResult<UserModel>> GetUser(string id)
         {
             var userModel = await _context.Users.FindAsync(id);
 
@@ -76,12 +76,16 @@ namespace UserManagementService.Controllers
         // POST: api/User
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<UserModel>> PostUserModel(UserModel userModel)
+        public async Task<ActionResult<UserModel>> PostUser(UserModel userModel)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState); // Xử lý lỗi nếu dữ liệu không hợp lệ
+            }
+            
             _context.Users.Add(userModel);
             await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetUserModel", new { id = userModel.id_user }, userModel);
+            return CreatedAtAction("GetUser", new { id = userModel.id_user }, userModel);
         }
 
         // DELETE: api/User/5

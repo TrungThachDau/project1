@@ -1,6 +1,6 @@
 .container-fluid {
   display: flex;
-  height: 80vh; /* Chiều cao của container */
+  height: 88vh; /* Chiều cao của container */
   box-sizing: border-box; /* Đảm bảo padding và border không làm thay đổi kích thước */
 }
 
@@ -57,4 +57,7 @@
 .uid-column {
   width: 10% !important; /* Chiều rộng cột UID */
   text-align: center; /* Canh giữa nội dung trong cột */
+}
+.table tbody td {
+  font-size: 11px;
 }

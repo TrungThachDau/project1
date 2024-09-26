@@ -22,7 +22,7 @@ export class NavbarComponent {
   navButton = [
 
     { name: 'Quản lý người dùng', permission: 'USER_MANAGEMENT', path: '/all-user' },
-    { name: 'Phân quyền', permission: 'Function2', path: '/productManagement' }
+    { name: 'Phân quyền', permission: 'AUTHORIZATION', path: '/authorization' }
   ];
 
   constructor(private authService: AuthService, private router: Router) {

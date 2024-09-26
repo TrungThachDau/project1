@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from "@angular/material/form-field";
-import {FormsModule, ReactiveFormsModule, } from "@angular/forms";
+import {EmailValidator, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators, } from "@angular/forms";
 
 import { MatInputModule } from "@angular/material/input";
 import {Router, RouterLink} from "@angular/router";
@@ -26,9 +26,13 @@ import {MatSnackBar} from "@angular/material/snack-bar";
   styleUrls: ['./signin.component.scss']
 })
 export class SigninComponent implements OnInit{
+  signInForm = new FormGroup({
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', [Validators.required,Validators.minLength(6)]),
+  });
+
   constructor(private authService : AuthService,private snackBar: MatSnackBar,private router : Router) {}  // Khởi tạo authService
-  email: string='';
-  password: string='';
+
   ngOnInit() {
     const token = sessionStorage.getItem('authToken');
     // Hoặc kiểm tra trong localStorage
@@ -40,13 +44,13 @@ export class SigninComponent implements OnInit{
     }
   }
   async signIn() {
-    if (!this.email || !this.password) {
+    if (!this.signInForm.value.email || !this.signInForm.value.password) {
       this.handleError('Vui lòng nhập đầy đủ thông tin');
       return;
     }
 
     try {
-      const result: any = await this.authService.signIn(this.email, this.password);
+      const result: any = await this.authService.signIn(this.signInForm.value.email, this.signInForm.value.password);
       const IdToken = result.user.accessToken;
 
       try {
@@ -73,9 +77,9 @@ export class SigninComponent implements OnInit{
         console.error('Error verifying token:', verifyError);
         this.handleError('Không thể kết nối với server. Vui lòng thử lại sau.');
       }
-    } catch (loginError) {
+    } catch (loginError:any) {
       console.error('Login error:', loginError);
-      this.handleError('Đăng nhập thất bại. Vui lòng thử lại.');
+      this.handleError('Đăng nhập thất bại: '+loginError.code);
     }
   }
 

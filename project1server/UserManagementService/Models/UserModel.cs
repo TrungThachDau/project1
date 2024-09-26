@@ -13,8 +13,8 @@ namespace UserManagementService.Models
         public string? email { get; set; }
         public string? phone { get; set; }
         public string? address { get; set; }
-        public int id_role { get; set; }
+        public int? id_role { get; set; }
         [ForeignKey("id_role")]
-        public RoleModel role { get; set; }
+        public RoleModel? role { get; set; }
     }
 }
