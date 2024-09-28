@@ -1,0 +1,22 @@
+<app-navbar></app-navbar>
+<div class="container-fluid">
+  <div class="list-section">
+    <app-authorization-list-section></app-authorization-list-section>
+  </div>
+  <div class="table-section">
+    <h4>Thêm vai trò</h4>
+    <form class="add-role-form" [formGroup]="editRoleForm" (ngSubmit)="updateRole()">
+      <mat-form-field class="form-full-width">
+        <mat-label>Tên vai trò</mat-label>
+        <input formControlName="name" name="name" matInput placeholder="Ex. Pizza">
+      </mat-form-field>
+      <mat-form-field class="form-full-width">
+        <mat-label>Mô tả</mat-label>
+        <input formControlName="description" name="description" matInput placeholder="Ex. Pizza">
+      </mat-form-field>
+      <button type="submit" mat-flat-button class="form-full-width">Lưu</button>
+    </form>
+
+  </div>
+
+</div>

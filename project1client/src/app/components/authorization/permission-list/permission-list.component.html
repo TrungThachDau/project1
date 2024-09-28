@@ -14,15 +14,11 @@
       </tr>
       </thead>
       <tbody>
-      <!--      <tr *ngFor="let user of users">-->
-      <!--        <td class="uid-column">{{user.id_user}}</td>-->
-      <!--        <td>{{user.name}}</td>-->
-      <!--        <td>{{user.email}}</td>-->
-      <!--        <td>{{user.address}}</td>-->
-      <!--        <td>{{user.phone}}</td>-->
-      <!--        <td>{{user.role.name_role}}</td>-->
-      <!--        <td>Xóa | <a routerLink="/edit-user/{{user.id_user}}">Sửa</a></td>-->
-      <!--      </tr>-->
+            <tr *ngFor="let permission of permissions">
+              <td class="uid-column">{{permission.id_permission}}</td>
+              <td>{{permission.permission_name}}</td>
+              <td>{{permission.description}}</td>
+            </tr>
       </tbody>
     </table>
 

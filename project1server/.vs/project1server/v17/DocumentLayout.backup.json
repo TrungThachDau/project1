@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "D:\\project1\\project1\\project1server\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{6417F48B-A565-47E6-A9DF-0E54C455830F}|UserManagementService\\UserManagementService.csproj|d:\\project1\\project1\\project1server\\usermanagementservice\\models\\usermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6417F48B-A565-47E6-A9DF-0E54C455830F}|UserManagementService\\UserManagementService.csproj|solutionrelative:usermanagementservice\\models\\usermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6417F48B-A565-47E6-A9DF-0E54C455830F}|UserManagementService\\UserManagementService.csproj|d:\\project1\\project1\\project1server\\usermanagementservice\\controllers\\authorizationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6417F48B-A565-47E6-A9DF-0E54C455830F}|UserManagementService\\UserManagementService.csproj|solutionrelative:usermanagementservice\\controllers\\authorizationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6417F48B-A565-47E6-A9DF-0E54C455830F}|UserManagementService\\UserManagementService.csproj|d:\\project1\\project1\\project1server\\usermanagementservice\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6417F48B-A565-47E6-A9DF-0E54C455830F}|UserManagementService\\UserManagementService.csproj|solutionrelative:usermanagementservice\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6417F48B-A565-47E6-A9DF-0E54C455830F}|UserManagementService\\UserManagementService.csproj|d:\\project1\\project1\\project1server\\usermanagementservice\\controllers\\permissioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6417F48B-A565-47E6-A9DF-0E54C455830F}|UserManagementService\\UserManagementService.csproj|solutionrelative:usermanagementservice\\controllers\\permissioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{6417F48B-A565-47E6-A9DF-0E54C455830F}|UserManagementService\\UserManagementService.csproj|d:\\project1\\project1\\project1server\\usermanagementservice\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -22,19 +22,19 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "UserModel.cs",
-              "DocumentMoniker": "D:\\project1\\project1\\project1server\\UserManagementService\\Models\\UserModel.cs",
-              "RelativeDocumentMoniker": "UserManagementService\\Models\\UserModel.cs",
-              "ToolTip": "D:\\project1\\project1\\project1server\\UserManagementService\\Models\\UserModel.cs",
-              "RelativeToolTip": "UserManagementService\\Models\\UserModel.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAABEAAAAcAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "PermissionController.cs",
+              "DocumentMoniker": "D:\\project1\\project1\\project1server\\UserManagementService\\Controllers\\PermissionController.cs",
+              "RelativeDocumentMoniker": "UserManagementService\\Controllers\\PermissionController.cs",
+              "ToolTip": "D:\\project1\\project1\\project1server\\UserManagementService\\Controllers\\PermissionController.cs",
+              "RelativeToolTip": "UserManagementService\\Controllers\\PermissionController.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-25T10:30:10.25Z",
+              "WhenOpened": "2024-09-27T03:59:34.522Z",
               "EditorCaption": ""
             },
             {
@@ -45,21 +45,22 @@
               "RelativeDocumentMoniker": "UserManagementService\\Controllers\\AuthController.cs",
               "ToolTip": "D:\\project1\\project1\\project1server\\UserManagementService\\Controllers\\AuthController.cs",
               "RelativeToolTip": "UserManagementService\\Controllers\\AuthController.cs",
-              "ViewState": "AgIAAGgAAAAAAAAAAADwvwAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABsAAAAAAAAAAAAowCgAAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-25T07:42:48.818Z"
+              "WhenOpened": "2024-09-27T03:15:37.439Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "UserController.cs",
-              "DocumentMoniker": "D:\\project1\\project1\\project1server\\UserManagementService\\Controllers\\UserController.cs",
-              "RelativeDocumentMoniker": "UserManagementService\\Controllers\\UserController.cs",
-              "ToolTip": "D:\\project1\\project1\\project1server\\UserManagementService\\Controllers\\UserController.cs",
-              "RelativeToolTip": "UserManagementService\\Controllers\\UserController.cs",
-              "ViewState": "AgIAAEgAAAAAAAAAAAAAAFUAAAAoAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "AuthorizationController.cs",
+              "DocumentMoniker": "D:\\project1\\project1\\project1server\\UserManagementService\\Controllers\\AuthorizationController.cs",
+              "RelativeDocumentMoniker": "UserManagementService\\Controllers\\AuthorizationController.cs",
+              "ToolTip": "D:\\project1\\project1\\project1server\\UserManagementService\\Controllers\\AuthorizationController.cs",
+              "RelativeToolTip": "UserManagementService\\Controllers\\AuthorizationController.cs",
+              "ViewState": "AgIAAE8AAAAAAAAAAAAuwGQAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-24T07:32:42.79Z"
+              "WhenOpened": "2024-09-27T03:12:56.135Z",
+              "EditorCaption": ""
             }
           ]
         }

@@ -10,14 +10,16 @@
       <tr>
         <th scope="col" class="uid-column">#</th>
         <th scope="col">Tên vai trò</th>
-
+        <th scope="col">Mô tả</th>
+        <th scope="col">Hành động</th>
       </tr>
       </thead>
       <tbody>
             <tr *ngFor="let role of roles">
               <td class="uid-column">{{role.id_role}}</td>
               <td>{{role.name_role}}</td>
-              <td>Xóa | <a routerLink="/edit-user/{{role.id_user}}">Sửa</a></td>
+              <td>{{role.description}}</td>
+              <td><a routerLink="routerLink" (click)="openDialog(role.id_role, '300ms', '300ms')">Xóa</a> | <a routerLink="/authorization/role-list/edit-role/{{role.id_role}}">Sửa</a></td>
             </tr>
       </tbody>
     </table>

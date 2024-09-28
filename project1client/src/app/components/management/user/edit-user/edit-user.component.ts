@@ -84,6 +84,8 @@ export class EditUserComponent implements OnInit {
 
     this.userService.putUser(this.id,userData).subscribe(res => {
       this.router.navigate(['/all-user']);
+
     });
+
   }
 }

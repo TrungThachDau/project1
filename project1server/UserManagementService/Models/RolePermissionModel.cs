@@ -9,12 +9,12 @@ namespace UserManagementService.Models
         [Key]
         [Required]
         public int id_role_permission { get; set; }
-        public int id_role { get; set; }
-        public int id_permission { get; set; }
+        public int? id_role { get; set; }
+        public int? id_permission { get; set; }
         [ForeignKey("id_role")]
-        public RoleModel role { get; set; }
+        public RoleModel? role { get; set; }
         [ForeignKey("id_permission")]
-        public PermissionModel permission { get; set; }
+        public PermissionModel? permission { get; set; }
 
     }
 }

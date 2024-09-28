@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import { NavbarComponent } from "../../navbar/navbar.component";
-import {AsyncPipe, NgForOf} from "@angular/common";
+import {AsyncPipe, NgForOf, NgIf} from "@angular/common";
 import {RouterLink} from "@angular/router";
 import {UserListSectionComponent} from "../../management/user/user-list-section/user-list-section.component";
 import {AuthorizationListSectionComponent} from "../authorization-list-section/authorization-list-section.component";
@@ -17,6 +17,9 @@ import {MatInput, MatInputModule} from "@angular/material/input";
 import {MatCheckbox} from "@angular/material/checkbox";
 import {MatIcon} from "@angular/material/icon";
 import {RoleService} from "../../../services/role.service";
+import {AuthorizationService} from "../../../services/authorization.service";
+import {MatButton} from "@angular/material/button";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-authorization',
@@ -33,6 +36,9 @@ import {RoleService} from "../../../services/role.service";
     MatCheckbox,
     MatIcon,
     NgForOf,
+    NgIf,
+    MatButton,
+    RouterLink,
   ],
   templateUrl: './authorization.component.html',
   styleUrl: './authorization.component.scss'
@@ -41,8 +47,12 @@ export class AuthorizationComponent implements OnInit {
   myControl = new FormControl('');
   options: any[] = []; // options chứa các đối tượng thay vì chuỗi
   filteredOptions!: Observable<any[]>; // Observable trả về các đối tượng
+  allPermissions: any[] = [];
+  permissionsSelected: any[] = [];
+  roleSelected: any;
 
-  constructor(private roleService: RoleService) {}
+  constructor(private snackBar: MatSnackBar,private roleService: RoleService, private authorizationService: AuthorizationService) {
+  }
 
   ngOnInit() {
     this.loadRoles();
@@ -50,8 +60,9 @@ export class AuthorizationComponent implements OnInit {
     // Thay đổi để load tất cả các option khi input trống
     this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),
-      map(value => this._filter(value||''))
+      map(value => this._filter(value || ''))
     );
+    this.loadAllPermissions();
   }
 
   private loadRoles() {
@@ -60,7 +71,7 @@ export class AuthorizationComponent implements OnInit {
         this.options = data;
         this.filteredOptions = this.myControl.valueChanges.pipe(
           startWith(''),
-          map(value => this._filter(value||''))
+          map(value => this._filter(value || ''))
         );
       },
       error => {
@@ -69,8 +80,9 @@ export class AuthorizationComponent implements OnInit {
     );
   }
 
-  private _filter(value: string): any[] {
-    const filterValue = value?.toLowerCase() || '';
+  private _filter(value: any): any[] {
+    // Kiểm tra xem value có phải là chuỗi không, nếu không thì chuyển nó thành chuỗi rỗng
+    const filterValue = typeof value === 'string' ? value.toLowerCase() : '';
 
     // Trả về toàn bộ options nếu không có ký tự nhập vào
     return filterValue ? this.options.filter(option =>
@@ -78,8 +90,64 @@ export class AuthorizationComponent implements OnInit {
     ) : this.options;
   }
 
+
   onRoleSelected($event: MatAutocompleteSelectedEvent) {
-    alert($event.option.value);
+    const selectedRole = $event.option.value;
+    this.roleSelected = selectedRole;
+    this.loadPermissionByRole(selectedRole);
   }
+
+  private loadPermissionByRole(id: number) {
+    this.authorizationService.getPermissionByRole(id).subscribe(
+      (data: any[]) => {
+        // Gán danh sách quyền đã được chọn cho vai trò vào `permissionsSelected`
+        this.permissionsSelected = data;
+
+        // So sánh các quyền trong `allPermissions` với các quyền đã được chọn
+        this.allPermissions.forEach(permission => {
+          // So sánh `permission.id_permission` với `permissionsSelected.permission.id_permission`
+          permission.checked = this.permissionsSelected.some(selectedPermission =>
+            selectedPermission.permission.id_permission === permission.id_permission
+          );
+        });
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+
+  private loadAllPermissions() {
+    this.authorizationService.getAllPermission().subscribe(
+      (data: any[]) => {
+        this.allPermissions = data;
+      },
+      error => {
+        console.log(error);
+      }
+    );
+
+  }
+
+  saveRolePermission() {
+    const roleId = this.roleSelected;
+    const permissions = this.permissionsSelected;
+    const data = permissions.map(permission => ({
+      id_role: roleId,
+      id_permission: permission.id_permission,
+      role: null,
+      permission: null
+    }));
+    this.authorizationService.putRolePermission(roleId, data).subscribe(
+      () => {
+        this.snackBar.open("Phân quyền thành công.", 'Đóng', { duration: 3000 });
+      },
+      error => {
+        this.snackBar.open("Đã xảy ra lỗi, xin thử lại sau.", 'Đóng', { duration: 3000 });
+        console.log(error);
+      }
+    )
+  };
 }
+
 
