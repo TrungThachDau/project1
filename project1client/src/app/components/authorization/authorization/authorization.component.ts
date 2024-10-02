@@ -20,6 +20,7 @@ import {RoleService} from "../../../services/role.service";
 import {AuthorizationService} from "../../../services/authorization.service";
 import {MatButton} from "@angular/material/button";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import { idToken } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-authorization',
@@ -131,14 +132,18 @@ export class AuthorizationComponent implements OnInit {
 
   saveRolePermission() {
     const roleId = this.roleSelected;
-    const permissions = this.permissionsSelected;
+    const permissions = this.allPermissions.filter(permission => permission.checked);
+
     const data = permissions.map(permission => ({
       id_role: roleId,
       id_permission: permission.id_permission,
       role: null,
       permission: null
     }));
-    this.authorizationService.putRolePermission(roleId, data).subscribe(
+    console.log(data);
+    const token = sessionStorage.getItem('authToken');
+    if (token) {
+      this.authorizationService.putRolePermission(roleId, data, token).subscribe(
       () => {
         this.snackBar.open("Phân quyền thành công.", 'Đóng', { duration: 3000 });
       },
@@ -146,7 +151,9 @@ export class AuthorizationComponent implements OnInit {
         this.snackBar.open("Đã xảy ra lỗi, xin thử lại sau.", 'Đóng', { duration: 3000 });
         console.log(error);
       }
-    )
+    );
+
+  }
   };
 }
 

@@ -9,6 +9,10 @@ using UserManagementService.Models;
 
 namespace UserManagementService.Controllers
 {
+    public interface ITokenService
+    {
+        Task<string> VerifyToken(string idToken);
+    }
     [Route("api/[controller]")]
     [ApiController]
     public class AuthController : ControllerBase

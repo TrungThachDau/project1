@@ -12,6 +12,11 @@ import {UserListSectionComponent} from "../user-list-section/user-list-section.c
 import {UserService} from "../../../../services/user.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {RoleService} from "../../../../services/role.service";
+import {
+  DialogAddUserSuccessfulComponent
+} from "../add-user/dialog-add-user-successful/dialog-add-user-successful.component";
+import {MatDialog} from "@angular/material/dialog";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-edit-user',
@@ -46,7 +51,7 @@ export class EditUserComponent implements OnInit {
     role: new FormControl('', [Validators.required])
 
   });
-  constructor(private userService: UserService,private route: ActivatedRoute, private router: Router,private roleService: RoleService) { }
+  constructor(private userService: UserService,private route: ActivatedRoute, private router: Router,private roleService: RoleService,public snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.loadRoles();
@@ -82,9 +87,14 @@ export class EditUserComponent implements OnInit {
       role:null,
     };
 
-    this.userService.putUser(this.id,userData).subscribe(res => {
-      this.router.navigate(['/all-user']);
-
+    this.userService.putUser(this.id,userData).subscribe({
+      next: () => {
+        this.snackBar.open("Cập nhật thành công.", 'Đóng', { duration: 3000 });
+      },
+      error: error => {
+        this.snackBar.open("Đã xảy ra lỗi. Vui lòng thử lại.", 'Đóng', { duration: 3000 });
+        console.log(error);
+      }
     });
 
   }

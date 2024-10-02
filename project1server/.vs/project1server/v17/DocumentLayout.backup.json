@@ -7,10 +7,6 @@
       "RelativeMoniker": "D:0:0:{6417F48B-A565-47E6-A9DF-0E54C455830F}|UserManagementService\\UserManagementService.csproj|solutionrelative:usermanagementservice\\controllers\\authorizationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6417F48B-A565-47E6-A9DF-0E54C455830F}|UserManagementService\\UserManagementService.csproj|d:\\project1\\project1\\project1server\\usermanagementservice\\controllers\\permissioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6417F48B-A565-47E6-A9DF-0E54C455830F}|UserManagementService\\UserManagementService.csproj|solutionrelative:usermanagementservice\\controllers\\permissioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{6417F48B-A565-47E6-A9DF-0E54C455830F}|UserManagementService\\UserManagementService.csproj|d:\\project1\\project1\\project1server\\usermanagementservice\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6417F48B-A565-47E6-A9DF-0E54C455830F}|UserManagementService\\UserManagementService.csproj|solutionrelative:usermanagementservice\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
@@ -22,32 +18,20 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "PermissionController.cs",
-              "DocumentMoniker": "D:\\project1\\project1\\project1server\\UserManagementService\\Controllers\\PermissionController.cs",
-              "RelativeDocumentMoniker": "UserManagementService\\Controllers\\PermissionController.cs",
-              "ToolTip": "D:\\project1\\project1\\project1server\\UserManagementService\\Controllers\\PermissionController.cs",
-              "RelativeToolTip": "UserManagementService\\Controllers\\PermissionController.cs",
-              "ViewState": "AgIAABIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-27T03:59:34.522Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
               "Title": "AuthController.cs",
               "DocumentMoniker": "D:\\project1\\project1\\project1server\\UserManagementService\\Controllers\\AuthController.cs",
               "RelativeDocumentMoniker": "UserManagementService\\Controllers\\AuthController.cs",
               "ToolTip": "D:\\project1\\project1\\project1server\\UserManagementService\\Controllers\\AuthController.cs",
               "RelativeToolTip": "UserManagementService\\Controllers\\AuthController.cs",
-              "ViewState": "AgIAABsAAAAAAAAAAAAowCgAAAAiAAAAAAAAAA==",
+              "ViewState": "AgIAACkAAAAAAAAAAADwvyoAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-27T03:15:37.439Z"
+              "WhenOpened": "2024-09-30T04:50:14.611Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -57,9 +41,9 @@
               "RelativeDocumentMoniker": "UserManagementService\\Controllers\\AuthorizationController.cs",
               "ToolTip": "D:\\project1\\project1\\project1server\\UserManagementService\\Controllers\\AuthorizationController.cs",
               "RelativeToolTip": "UserManagementService\\Controllers\\AuthorizationController.cs",
-              "ViewState": "AgIAAE8AAAAAAAAAAAAuwGQAAAANAAAAAAAAAA==",
+              "ViewState": "AgIAAFgAAAAAAAAAAAAuwF8AAABWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-27T03:12:56.135Z",
+              "WhenOpened": "2024-09-30T03:47:21.77Z",
               "EditorCaption": ""
             }
           ]

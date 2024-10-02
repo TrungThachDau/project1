@@ -24,10 +24,16 @@ export class AuthorizationService {
       .pipe(catchError(this.errorHandler));
   }
 
-  putRolePermission(roleId: number, permissionIds: any[]){
-    return this.httpClient.put(`${this.apiUrl}/Authorization/update-role-permission/${roleId}`, permissionIds, this.httpOptions)
-      .pipe(catchError(this.errorHandler));
+  putRolePermission(roleId: number, permissionIds: any[], idToken:string) {
+    return this.httpClient.put(`${this.apiUrl}/Authorization/update-role-permission/${roleId}?idToken=${idToken}`, permissionIds, this.httpOptions)
+      .pipe(
+        catchError((error: any) => {
+          throw new Error(error.message || 'Unknown error');
+          // Quan trọng để truyền lỗi về subscriber
+        })
+      );
   }
+
   errorHandler(error: any): Observable<never> {
     let errorMessage = '';
     if (error.error instanceof ErrorEvent) {

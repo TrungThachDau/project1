@@ -219,6 +219,11 @@
         "Name": "rolePermissionModels",
         "Type": "UserManagementService.Models.RolePermissionModel[]",
         "IsRequired": true
+      },
+      {
+        "Name": "idToken",
+        "Type": "System.String",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []
