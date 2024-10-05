@@ -8,10 +8,10 @@
         </button>
 
         <button class="custom-button" *ngFor="let btn of navButton"
-                mat-button
-                routerLink="{{ btn.path }}"
-                routerLinkActive="active-button"
-                [routerLinkActiveOptions]="{ exact: false }"
+                                        mat-button
+                                        routerLink="{{ btn.path }}"
+                                        routerLinkActive="active-button"
+                                        [routerLinkActiveOptions]="{ exact: false }"
                 [disabled]="!hasPermission(btn.permission)">
           {{ btn.name }}
         </button>

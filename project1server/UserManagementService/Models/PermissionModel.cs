@@ -9,6 +9,7 @@ namespace UserManagementService.Models
         [Key]
         [Required]
         public int id_permission { get; set; }
-        public string permission_name { get; set; }
+        public string? permission_name { get; set; }
+        public string? description { get; set; }
     }
 }

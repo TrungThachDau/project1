@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {NavbarComponent} from "../../../navbar/navbar.component";
-import {UserListSectionComponent} from "../user-list-section/user-list-section.component";
+import {UserListSectionComponent} from "../../list-section/user-list-section.component";
 import {MatError, MatFormField, MatFormFieldModule, MatLabel} from "@angular/material/form-field";
 import {MatIcon, MatIconModule} from "@angular/material/icon";
 import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
@@ -21,6 +21,7 @@ import {
 } from "@angular/material/dialog";
 import {DialogAddUserSuccessfulComponent} from "./dialog-add-user-successful/dialog-add-user-successful.component";
 import { UserService } from '../../../../services/user.service';
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-add-user',
@@ -46,14 +47,15 @@ import { UserService } from '../../../../services/user.service';
     MatDialogActions,
     MatDialogContent,
     MatDialogTitle,
-    MatDialogModule
+    MatDialogModule,
+    RouterLink
   ],
   templateUrl: './add-user.component.html',
   styleUrls: ['./add-user.component.scss']
 })
 export class AddUserComponent implements OnInit {
   addUserForm = new FormGroup({
-    email: new FormControl('',[Validators.required, Validators.email]), 
+    email: new FormControl('',[Validators.required, Validators.email]),
     name: new FormControl('', [Validators.required]),
     phone: new FormControl(''),
     address: new FormControl(''),
@@ -65,7 +67,7 @@ export class AddUserComponent implements OnInit {
   selectedValue: any;
   roles: any[] = [];
   password = this.generatePassword();
-  
+
 
   constructor(private userService: UserService,private authService: AuthService, private roleService: RoleService,public dialog: MatDialog) {
   }
@@ -97,12 +99,12 @@ export class AddUserComponent implements OnInit {
         address: this.addUserForm.value.address,
         id_role: this.addUserForm.value.role
       };
-  
+
       // Gửi dữ liệu người dùng tới server
       this.userService.postUser(userData).subscribe({
         next: (response) => {
           console.log('User created successfully:', response);
-          
+
           // Mở dialog khi đăng ký thành công
           this.dialog.open(DialogAddUserSuccessfulComponent, {
             data: { username: this.addUserForm.value.email, password: this.password } // Chỉ gửi thông tin không nhạy cảm
@@ -121,8 +123,8 @@ export class AddUserComponent implements OnInit {
       // this.snackBar.open('Đăng ký thất bại, vui lòng thử lại', 'Close', { duration: 3000 });
     }
   }
-  
-  
+
+
   private generatePassword() {
     const length = 8;
     let result = '';

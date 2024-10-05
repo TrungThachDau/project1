@@ -2,8 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import { NavbarComponent } from "../../navbar/navbar.component";
 import {AsyncPipe, NgForOf, NgIf} from "@angular/common";
 import {RouterLink} from "@angular/router";
-import {UserListSectionComponent} from "../../management/user/user-list-section/user-list-section.component";
-import {AuthorizationListSectionComponent} from "../authorization-list-section/authorization-list-section.component";
+import {UserListSectionComponent} from "../../management/list-section/user-list-section.component";
 import {MatFormField, MatFormFieldModule} from "@angular/material/form-field";
 import {
   MatAutocomplete,
@@ -32,7 +31,6 @@ import { idToken } from '@angular/fire/auth';
     MatAutocompleteModule,
     ReactiveFormsModule,
     AsyncPipe,
-    AuthorizationListSectionComponent,
     NavbarComponent,
     MatCheckbox,
     MatIcon,
@@ -40,6 +38,7 @@ import { idToken } from '@angular/fire/auth';
     NgIf,
     MatButton,
     RouterLink,
+    UserListSectionComponent,
   ],
   templateUrl: './authorization.component.html',
   styleUrl: './authorization.component.scss'

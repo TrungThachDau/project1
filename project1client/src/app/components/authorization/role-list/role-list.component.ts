@@ -1,5 +1,4 @@
 import {Component, inject, OnInit} from '@angular/core';
-import {AuthorizationListSectionComponent} from "../authorization-list-section/authorization-list-section.component";
 import {NavbarComponent} from "../../navbar/navbar.component";
 import {RoleService} from "../../../services/role.service";
 import {RouterLink} from "@angular/router";
@@ -9,15 +8,25 @@ import {MatDialog} from "@angular/material/dialog";
 import {
   DialogAddUserSuccessfulComponent
 } from "../../management/user/add-user/dialog-add-user-successful/dialog-add-user-successful.component";
+import {UserListSectionComponent} from "../../management/list-section/user-list-section.component";
+import {MatButton} from "@angular/material/button";
+import {MatIcon} from "@angular/material/icon";
+import {MatMenu, MatMenuItem, MatMenuTrigger} from "@angular/material/menu";
 
 @Component({
   selector: 'app-role-list',
   standalone: true,
   imports: [
-    AuthorizationListSectionComponent,
+
     NavbarComponent,
     RouterLink,
     NgForOf,
+    UserListSectionComponent,
+    MatButton,
+    MatIcon,
+    MatMenu,
+    MatMenuItem,
+    MatMenuTrigger,
   ],
   templateUrl: './role-list.component.html',
   styleUrl: './role-list.component.scss'

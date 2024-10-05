@@ -10,11 +10,11 @@
         "projectUniqueName": "D:\\project1\\project1\\project1server\\ApiGateway\\ApiGateway.csproj",
         "projectName": "ApiGateway",
         "projectPath": "D:\\project1\\project1\\project1server\\ApiGateway\\ApiGateway.csproj",
-        "packagesPath": "C:\\Users\\android17x\\.nuget\\packages\\",
+        "packagesPath": "C:\\Users\\trungthachdau\\.nuget\\packages\\",
         "outputPath": "D:\\project1\\project1\\project1server\\ApiGateway\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\android17x\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\trungthachdau\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

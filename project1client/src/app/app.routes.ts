@@ -20,14 +20,14 @@ export const routes: Routes = [
   {path:'dashboard',component:DashboardComponent},
   {path:'resetpassword',component:ResetpasswordComponent, title:'Đặt lại mật khẩu'},
   {path:'changepassword',component:ChangepasswordComponent, title:'Đổi mật khẩu'},
-  {path:'user-management',component:AllUserComponent, title:'Quản lí người dùng',canActivate: [authGuard], // Áp dụng guard
-    data: { requiredPermission: 'USER_MANAGEMENT' }},
-  {path:'user-management/add',component:AddUserComponent, title:'Thêm người dùng',canActivate: [authGuard],data: { requiredPermissions: ['USER_MANAGEMENT', 'ADD_USER'] } }, // Áp dụng guard}
-  {path:'authorization',component:AuthorizationComponent, title:'Phân quyền',canActivate: [authGuard],data: { requiredPermissions: ['USER_MANAGEMENT', 'ADD_USER'] } }, // Áp dụng guard}
-  {path:'all-role',component:AllRoleComponent, title:'Quản lí vai trò',canActivate: [authGuard] },
-  {path:'user-management/edit-user/:id',component:EditUserComponent, title:'Sửa người dùng',canActivate: [authGuard],data: { requiredPermissions: ['USER_MANAGEMENT', 'EDIT_USER'] } }, // Áp dụng guard}
-  {path:'authorization/permission-list',component:PermissionListComponent, title:'Danh sách quyền',canActivate: [authGuard] ,data: { requiredPermissions: ['AUTHORIZATION'] }},
-  {path:'authorization/role-list',component:RoleListComponent, title:'Danh sách vai trò',canActivate: [authGuard] ,data: { requiredPermissions: ['AUTHORIZATION'] }},// Áp dụng guard}
-  {path:'authorization/role-list/add-role',component:AddRoleComponent, title:'Thêm vai trò',canActivate: [authGuard] ,data: { requiredPermissions: ['AUTHORIZATION'] }},// Áp dụng guard}
-  {path:'authorization/role-list/edit-role/:id_role',component:EditRoleComponent, title:'Thêm vai trò',canActivate: [authGuard] ,data: { requiredPermissions: ['AUTHORIZATION'] }}// Áp dụng guard}
+  {path:'management',redirectTo:'/management/user',pathMatch:'full'},
+  {path:'management/user',component:AllUserComponent, title:'Quản lý',canActivate: [authGuard], data: { requiredPermission: 'USER_MANAGEMENT' }},
+  {path:'management/user/add',component:AddUserComponent, title:'Thêm người dùng',canActivate: [authGuard],data: { requiredPermissions: ['USER_MANAGEMENT', 'ADD_USER'] } }, // Áp dụng guard}
+  {path:'management/authorization',component:AuthorizationComponent, title:'Phân quyền',canActivate: [authGuard],data: { requiredPermissions: ['USER_MANAGEMENT', 'ADD_USER'] } }, // Áp dụng guard}
+  {path:'management/all-role',component:AllRoleComponent, title:'Quản lí vai trò',canActivate: [authGuard] },
+  {path:'management/user/edit/:id',component:EditUserComponent, title:'Sửa người dùng',canActivate: [authGuard],data: { requiredPermissions: ['USER_MANAGEMENT', 'EDIT_USER'] } }, // Áp dụng guard}
+  {path:'management/permission',component:PermissionListComponent, title:'Danh sách quyền',canActivate: [authGuard] ,data: { requiredPermissions: ['AUTHORIZATION'] }},
+  {path:'management/role',component:RoleListComponent, title:'Danh sách vai trò',canActivate: [authGuard] ,data: { requiredPermissions: ['AUTHORIZATION'] }},// Áp dụng guard}
+  {path:'management/role/add',component:AddRoleComponent, title:'Thêm vai trò',canActivate: [authGuard] ,data: { requiredPermissions: ['AUTHORIZATION'] }},// Áp dụng guard}
+  {path:'management/role/edit/:id_role',component:EditRoleComponent, title:'Thêm vai trò',canActivate: [authGuard] ,data: { requiredPermissions: ['AUTHORIZATION'] }}// Áp dụng guard}
 ];

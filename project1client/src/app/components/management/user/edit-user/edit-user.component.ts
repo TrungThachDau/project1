@@ -8,7 +8,7 @@ import {MatOption} from "@angular/material/core";
 import {MatSelect} from "@angular/material/select";
 import {NgForOf} from "@angular/common";
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
-import {UserListSectionComponent} from "../user-list-section/user-list-section.component";
+import {UserListSectionComponent} from "../../list-section/user-list-section.component";
 import {UserService} from "../../../../services/user.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {RoleService} from "../../../../services/role.service";

@@ -1,17 +1,21 @@
 import {Component, OnInit} from '@angular/core';
-import {AuthorizationListSectionComponent} from "../authorization-list-section/authorization-list-section.component";
 import {NavbarComponent} from "../../navbar/navbar.component";
 import {RoleService} from "../../../services/role.service";
 import {AuthorizationService} from "../../../services/authorization.service";
 import {NgForOf} from "@angular/common";
+import {UserListSectionComponent} from "../../management/list-section/user-list-section.component";
+import {MatButton} from "@angular/material/button";
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-permission-list',
   standalone: true,
   imports: [
-    AuthorizationListSectionComponent,
     NavbarComponent,
-    NgForOf
+    NgForOf,
+    UserListSectionComponent,
+    MatButton,
+    RouterLink
   ],
   templateUrl: './permission-list.component.html',
   styleUrl: './permission-list.component.scss'

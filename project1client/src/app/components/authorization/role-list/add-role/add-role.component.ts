@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {NavbarComponent} from "../../../navbar/navbar.component";
-import {AuthorizationListSectionComponent} from "../../authorization-list-section/authorization-list-section.component";
 import {NgForOf} from "@angular/common";
 import {RouterLink} from "@angular/router";
 import {MatFormField, MatLabel} from "@angular/material/form-field";
@@ -9,21 +8,22 @@ import {MatButton} from "@angular/material/button";
 import {RoleService} from "../../../../services/role.service";
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {UserListSectionComponent} from "../../../management/list-section/user-list-section.component";
 
 @Component({
   selector: 'app-add-role',
   standalone: true,
-  imports: [
-    NavbarComponent,
-    AuthorizationListSectionComponent,
-    NgForOf,
-    RouterLink,
-    MatFormField,
-    MatInput,
-    MatLabel,
-    MatButton,
-    ReactiveFormsModule
-  ],
+    imports: [
+        NavbarComponent,
+        NgForOf,
+        RouterLink,
+        MatFormField,
+        MatInput,
+        MatLabel,
+        MatButton,
+        ReactiveFormsModule,
+        UserListSectionComponent
+    ],
   templateUrl: './add-role.component.html',
   styleUrl: './add-role.component.scss'
 })

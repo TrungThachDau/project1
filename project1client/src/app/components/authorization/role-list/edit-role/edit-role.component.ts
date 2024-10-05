@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {AuthorizationListSectionComponent} from "../../authorization-list-section/authorization-list-section.component";
 import {MatButton} from "@angular/material/button";
 import {MatFormField, MatLabel} from "@angular/material/form-field";
 import {MatInput} from "@angular/material/input";
@@ -7,19 +6,21 @@ import {NavbarComponent} from "../../../navbar/navbar.component";
 import {FormControl, FormGroup, ReactiveFormsModule} from "@angular/forms";
 import {RoleService} from "../../../../services/role.service";
 import {ActivatedRoute, Router} from "@angular/router";
+import {UserListSectionComponent} from "../../../management/list-section/user-list-section.component";
 
 @Component({
   selector: 'app-edit-role',
   standalone: true,
-  imports: [
-      AuthorizationListSectionComponent,
-      MatButton,
-      MatFormField,
-      MatInput,
-      MatLabel,
-      NavbarComponent,
-      ReactiveFormsModule
-  ],
+    imports: [
+
+        MatButton,
+        MatFormField,
+        MatInput,
+        MatLabel,
+        NavbarComponent,
+        ReactiveFormsModule,
+        UserListSectionComponent
+    ],
   templateUrl: './edit-role.component.html',
   styleUrl: './edit-role.component.scss'
 })

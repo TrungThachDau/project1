@@ -12,5 +12,6 @@ namespace UserManagementService.Models
        
         [Column("name_role")]
         public string? name_role { get; set; }
+        public string? description {  get; set; }
     }
 }

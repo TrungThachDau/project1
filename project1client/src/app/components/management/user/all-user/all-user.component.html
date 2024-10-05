@@ -4,33 +4,56 @@
    <app-user-list-section></app-user-list-section>
   </div>
   <div class="table-section">
-    <h4>Quản lý người dùng</h4>
-    <table class="table table-striped table-hover table-bordered">
-      <thead>
-      <tr>
-        <th scope="col" class="uid-column">UID</th>
-        <th scope="col">Tên</th>
-        <th scope="col">Email</th>
-        <th scope="col">Địa chỉ</th>
-        <th scope="col">Số điện thoại</th>
-        <th scope="col">Vai trò</th>
-        <th scope="col">Hành động</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr *ngFor="let user of users">
-        <td class="uid-column">{{user.id_user}}</td>
-        <td>{{user.name}}</td>
-        <td>{{user.email}}</td>
-        <td>{{user.address}}</td>
-        <td>{{user.phone}}</td>
-        <td>{{user.role.name_role}}</td>
-        <td>Xóa | <a routerLink="/user-management/edit-user/{{user.id_user}}">Sửa</a></td>
-      </tr>
-      </tbody>
-    </table>
+    <h6>Quản lí người dùng</h6>
+    <div class="table-user">
+      <div class="toolbar">
+        <input class="input-search" type="search" placeholder="Tìm người dùng" aria-label="Tìm người dùng">
+        <button mat-flat-button routerLink="/management/user/add">Thêm người dùng mới</button>
+      </div>
 
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">NGƯỜI DÙNG</th>
+            <th scope="col">VAI TRÒ</th>
+            <th scope="col" style="width:20%">LẦN CUỐI ĐĂNG NHẬP</th>
+            <th scope="col">TRẠNG THÁI</th>
+            <th scope="col">HÀNH ĐỘNG</th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let user of users">
+          <td><p style="color:black">{{user.name}}</p>
+            <a>{{user.email}}</a>
+            </td>
 
+          <td>{{user.role.name_role}}</td>
+          <td>
+            <div class="status">
+              <b>Không rõ</b>
+            </div>
+          </td>
+          <td>
+            <div class="status">
+              <b>Đang hoạt động</b>
+            </div>
+          </td>
+          <td>
+            <button mat-stroked-button [matMenuTriggerFor]="menu">
+              <mat-icon>arrow_drop_down</mat-icon>
+              <a>Hành động</a>
+            </button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item routerLink="/management/user/detail/{{user.id_user}}">Xem</button>
+              <button mat-menu-item routerLink="/management/user/edit/{{user.id_user}}">Sửa</button>
+              <button mat-menu-item disabled>Xóa</button>
+              <button mat-menu-item disabled>Chặn</button>
+            </mat-menu>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
 
   </div>
 
