@@ -13,6 +13,7 @@ import {PermissionListComponent} from "./components/authorization/permission-lis
 import {RoleListComponent} from "./components/authorization/role-list/role-list.component";
 import {AddRoleComponent} from "./components/authorization/role-list/add-role/add-role.component";
 import {EditRoleComponent} from "./components/authorization/role-list/edit-role/edit-role.component";
+import {DetailUserComponent} from "./components/management/user/detail-user/detail-user.component";
 
 export const routes: Routes = [
   {path:'',redirectTo:'/signIn',pathMatch:'full'},
@@ -26,6 +27,7 @@ export const routes: Routes = [
   {path:'management/authorization',component:AuthorizationComponent, title:'Phân quyền',canActivate: [authGuard],data: { requiredPermissions: ['USER_MANAGEMENT', 'ADD_USER'] } }, // Áp dụng guard}
   {path:'management/all-role',component:AllRoleComponent, title:'Quản lí vai trò',canActivate: [authGuard] },
   {path:'management/user/edit/:id',component:EditUserComponent, title:'Sửa người dùng',canActivate: [authGuard],data: { requiredPermissions: ['USER_MANAGEMENT', 'EDIT_USER'] } }, // Áp dụng guard}
+  {path:'management/user/:id',component:DetailUserComponent, title:'Chi tiết người dùng',canActivate: [authGuard],data: { requiredPermissions: ['USER_MANAGEMENT'] } }, // Áp dụng guard}
   {path:'management/permission',component:PermissionListComponent, title:'Danh sách quyền',canActivate: [authGuard] ,data: { requiredPermissions: ['AUTHORIZATION'] }},
   {path:'management/role',component:RoleListComponent, title:'Danh sách vai trò',canActivate: [authGuard] ,data: { requiredPermissions: ['AUTHORIZATION'] }},// Áp dụng guard}
   {path:'management/role/add',component:AddRoleComponent, title:'Thêm vai trò',canActivate: [authGuard] ,data: { requiredPermissions: ['AUTHORIZATION'] }},// Áp dụng guard}

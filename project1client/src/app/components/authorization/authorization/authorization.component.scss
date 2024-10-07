@@ -1,18 +1,3 @@
-.container-fluid {
-  display: flex;
-  height: 88vh; /* Chiều cao của container */
-  box-sizing: border-box; /* Đảm bảo padding và border không làm thay đổi kích thước */
-}
-
-.list-section {
-  flex: 0 0 20%; /* Chiếm 30% chiều rộng của container */
-  padding-left: 10px; /* Xóa padding */
-  padding-right:10px;
-  padding-top:5px;
-  border-right: 1px solid #ccc; /* Viền bên phải của phần danh sách */
-  overflow-y: auto; /* Thêm thanh cuộn nếu nội dung dài hơn chiều cao của phần */
-  box-sizing: border-box; /* Đảm bảo padding và border không làm thay đổi kích thước */
-}
 
 .authorization-section {
   display: flex;

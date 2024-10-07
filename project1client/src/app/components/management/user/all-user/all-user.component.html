@@ -3,8 +3,11 @@
   <div class="list-section">
    <app-user-list-section></app-user-list-section>
   </div>
-  <div class="table-section">
-    <h6>Quản lí người dùng</h6>
+  <div class="content-section">
+    <mat-toolbar class="toolbar2">
+      <span>Quản lý người dùng</span>
+      <span class="example-spacer"></span>
+    </mat-toolbar>
     <div class="table-user">
       <div class="toolbar">
         <input class="input-search" type="search" placeholder="Tìm người dùng" aria-label="Tìm người dùng">
@@ -23,8 +26,10 @@
         </thead>
         <tbody>
         <tr *ngFor="let user of users">
-          <td><p style="color:black">{{user.name}}</p>
-            <a>{{user.email}}</a>
+          <td><p class="name" routerLink="/management/user/{{user.id_user}}">{{user.name}}
+            <br/>
+            <a class="email">{{user.email}}</a></p>
+
             </td>
 
           <td>{{user.role.name_role}}</td>
@@ -44,7 +49,7 @@
               <a>Hành động</a>
             </button>
             <mat-menu #menu="matMenu">
-              <button mat-menu-item routerLink="/management/user/detail/{{user.id_user}}">Xem</button>
+              <button mat-menu-item routerLink="/management/user/{{user.id_user}}">Xem</button>
               <button mat-menu-item routerLink="/management/user/edit/{{user.id_user}}">Sửa</button>
               <button mat-menu-item disabled>Xóa</button>
               <button mat-menu-item disabled>Chặn</button>

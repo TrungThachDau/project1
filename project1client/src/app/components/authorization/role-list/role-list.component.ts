@@ -12,22 +12,24 @@ import {UserListSectionComponent} from "../../management/list-section/user-list-
 import {MatButton} from "@angular/material/button";
 import {MatIcon} from "@angular/material/icon";
 import {MatMenu, MatMenuItem, MatMenuTrigger} from "@angular/material/menu";
+import {MatToolbar} from "@angular/material/toolbar";
 
 @Component({
   selector: 'app-role-list',
   standalone: true,
-  imports: [
+    imports: [
 
-    NavbarComponent,
-    RouterLink,
-    NgForOf,
-    UserListSectionComponent,
-    MatButton,
-    MatIcon,
-    MatMenu,
-    MatMenuItem,
-    MatMenuTrigger,
-  ],
+        NavbarComponent,
+        RouterLink,
+        NgForOf,
+        UserListSectionComponent,
+        MatButton,
+        MatIcon,
+        MatMenu,
+        MatMenuItem,
+        MatMenuTrigger,
+        MatToolbar,
+    ],
   templateUrl: './role-list.component.html',
   styleUrl: './role-list.component.scss'
 })

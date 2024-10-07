@@ -21,7 +21,7 @@ export const appConfig: ApplicationConfig = {
       measurementId: 'G-8M0MQWR1LE'
     })),
     provideAuth(() => getAuth()),
-    provideRouter(routes), provideAnimations(), provideHttpClient()
+    provideRouter(routes), provideAnimations(), provideHttpClient(), provideAnimationsAsync(), provideAnimationsAsync()
 
   ]
 };

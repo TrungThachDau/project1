@@ -75,7 +75,7 @@ export class SigninComponent implements OnInit{
         }
       } catch (verifyError) {
         console.error('Error verifying token:', verifyError);
-        this.handleError('Không thể kết nối với server. Vui lòng thử lại sau.');
+        this.handleError('Không thể kết nối với máy chủ. Vui lòng thử lại sau.');
       }
     } catch (loginError:any) {
       console.error('Login error:', loginError);

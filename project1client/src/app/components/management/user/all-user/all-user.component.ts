@@ -12,36 +12,38 @@ import {MatOption, MatSelect} from "@angular/material/select";
 import {MatInput} from "@angular/material/input";
 import {MatIcon} from "@angular/material/icon";
 import {MatMenu, MatMenuItem, MatMenuTrigger} from "@angular/material/menu";
+import {MatToolbar} from "@angular/material/toolbar";
 
 @Component({
   selector: 'app-all-user',
   standalone: true,
-  imports: [
-    NavbarComponent,
-    MatHeaderCell,
-    MatCell,
-    MatHeaderRow,
-    MatRow,
-    MatColumnDef,
-    MatTable,
-    MatList,
-    MatListItem,
-    UserListSectionComponent,
-    CommonModule,
-    RouterLink,
-    MatButton,
-    MatFormField,
-    MatSelect,
-    MatOption,
-    MatLabel,
-    MatInput,
-    MatIcon,
-    MatMenuTrigger,
-    MatMenu,
-    MatMenuItem,
-    RouterLinkActive,
-    MatFabButton
-  ],
+    imports: [
+        NavbarComponent,
+        MatHeaderCell,
+        MatCell,
+        MatHeaderRow,
+        MatRow,
+        MatColumnDef,
+        MatTable,
+        MatList,
+        MatListItem,
+        UserListSectionComponent,
+        CommonModule,
+        RouterLink,
+        MatButton,
+        MatFormField,
+        MatSelect,
+        MatOption,
+        MatLabel,
+        MatInput,
+        MatIcon,
+        MatMenuTrigger,
+        MatMenu,
+        MatMenuItem,
+        RouterLinkActive,
+        MatFabButton,
+        MatToolbar
+    ],
   templateUrl: './all-user.component.html',
   styleUrl: './all-user.component.scss'
 })
