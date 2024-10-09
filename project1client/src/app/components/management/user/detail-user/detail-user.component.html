@@ -4,7 +4,7 @@
     <app-user-list-section></app-user-list-section>
   </div>
   <div class="content-section">
-    <mat-toolbar>
+    <mat-toolbar class="toolbar2">
       <span>Thông tin người dùng</span>
       <span class="example-spacer"></span>
       <button mat-flat-button [matMenuTriggerFor]="menu">
@@ -40,7 +40,7 @@
             <p>
               <b>Vai trò </b>
 
-              <a>{{ user.id_role}}</a>
+              <a>{{ user.role.name_role}}</a>
             </p>
             <p>
               <b>Địa chỉ </b>
@@ -51,6 +51,16 @@
               <b>Số điện thoại </b>
 
               <a>{{ user.phone }}</a>
+            </p>
+            <p>
+              <b>Đăng nhập lần cuối </b>
+
+              <a>{{ user.last_login || "Chưa từng đăng nhập"}}</a>
+            </p>
+            <p>
+              <b>Tình trạng </b>
+
+              <a>{{ user.status||"Không rõ" }}</a>
             </p>
           </mat-card-content>
         </div>

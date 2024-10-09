@@ -4,10 +4,13 @@
     <app-user-list-section></app-user-list-section>
   </div>
   <div class="content-section">
-    <h4>Danh sách quyền</h4>
+    <mat-toolbar class="toolbar2">
+      <span>Danh sách quyền</span>
+      <span class="example-spacer"></span>
+    </mat-toolbar>
     <div class="table-user">
       <div class="toolbar">
-        <input class="input-search" type="search" placeholder="Tìm quyền" aria-label="Tìm người dùng">
+        <input [formControl]="search" class="input-search" type="search" placeholder="Tìm quyền" aria-label="Tìm người dùng">
 <!--        <button mat-flat-button routerLink="/user-management/add">Thêm người dùng mới</button>-->
       </div>
       <table class="table">
@@ -19,7 +22,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let permission of permissions">
+        <tr *ngFor="let permission of filteredPermissions">
           <td class="uid-column">{{permission.id_permission}}</td>
           <td>{{permission.permission_name}}</td>
           <td>{{permission.description}}</td>

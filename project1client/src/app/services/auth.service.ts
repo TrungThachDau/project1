@@ -57,7 +57,9 @@ export class AuthService {
       throw error;
     }
   }
-
+  updateLastLogin(id: string): Observable<any> {
+    return this.http.put(`${this.apiUrl}/Auth/update-last-login/${id}`, {}, this.httpOptions)
+  }
   verifyToken(idToken: string): Observable<any> {
     return this.http.post(`${this.apiUrl}/Auth/verify-token`, { IdToken: idToken }, this.httpOptions)
   }

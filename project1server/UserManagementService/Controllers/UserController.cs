@@ -32,7 +32,7 @@ namespace UserManagementService.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<UserModel>> GetUser(string id)
         {
-            var userModel = await _context.Users.FindAsync(id);
+            var userModel = await _context.Users.Include(p => p.role).FirstOrDefaultAsync(p=>p.id_user == id);
 
             if (userModel == null)
             {

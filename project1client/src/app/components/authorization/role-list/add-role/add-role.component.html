@@ -4,7 +4,10 @@
     <app-user-list-section></app-user-list-section>
   </div>
   <div class="content-section">
-    <h4>Thêm vai trò</h4>
+    <mat-toolbar class="toolbar2">
+      <span>Thêm vai trò</span>
+      <span class="example-spacer"></span>
+    </mat-toolbar>
     <form class="add-role-form" [formGroup]="addRoleForm" (ngSubmit)="addRole()">
       <mat-form-field class="form-full-width">
         <mat-label>Tên vai trò</mat-label>

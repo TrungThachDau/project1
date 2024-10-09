@@ -41,14 +41,16 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 })
 export class EditUserComponent implements OnInit {
   id!: string;
+  roleValue!: string;
   roles: any[] = [];
+  uid: string | null= sessionStorage.getItem('uid');
   editUserForm = new FormGroup({
     id_user: new FormControl('', [Validators.required]),
     email: new FormControl('',[Validators.required, Validators.email]),
     name: new FormControl('', [Validators.required]),
     phone: new FormControl(''),
     address: new FormControl(''),
-    role: new FormControl('', [Validators.required])
+    role: new FormControl({ value: '', readOnly: true }, [Validators.required]), // Khởi tạo với trạng thái disabled
 
   });
   constructor(private userService: UserService,private route: ActivatedRoute, private router: Router,private roleService: RoleService,public snackBar: MatSnackBar) { }
@@ -57,6 +59,8 @@ export class EditUserComponent implements OnInit {
     this.loadRoles();
     this.id = this.route.snapshot.params['id'];
     this.userService.getUserById(this.id).subscribe((data: any) => {
+      this.roleValue = data.id_role;
+
       this.editUserForm.setValue({
         id_user: data.id_user,
         email: data.email,
@@ -66,6 +70,7 @@ export class EditUserComponent implements OnInit {
         role: data.id_role
       });
     });
+    this.getPermissionById(sessionStorage.getItem('uid')!);
   }
   private loadRoles() {
     this.roleService.getAll().subscribe(data => {
@@ -83,7 +88,7 @@ export class EditUserComponent implements OnInit {
       email: this.editUserForm.value.email,
       phone: this.editUserForm.value.phone,
       address: this.editUserForm.value.address,
-      id_role: this.editUserForm.value.role,
+      id_role: this.editUserForm.value.role||this.roleValue,
       role:null,
     };
 
@@ -97,5 +102,19 @@ export class EditUserComponent implements OnInit {
       }
     });
 
+  }
+  getPermissionById(id: string) {
+    this.userService.getUserById(id).subscribe((data: any) => {
+      const userRole = data.id_role;
+      const user = data.id_user;
+      if(userRole==1) {
+        this.editUserForm.get('role')?.enable();
+      }
+      if(user==this.route.snapshot.params['id'])
+      {
+        alert("Bạn không thể sửa quyền chính mình.");
+        this.editUserForm.get('role')?.disable();
+      }
+    });
   }
 }

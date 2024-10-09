@@ -41,7 +41,22 @@ namespace UserManagementService.Controllers
                 return Unauthorized(new { message = "Token is invalid", error = ex.Message });
             }
         }
-        
+        [HttpPut("update-last-login/{id}")]
+        public async Task<IActionResult> UpdateLastLogin(string id)
+        {
+            var userModel = await _context.Users.FindAsync(id);
+
+            if (userModel == null)
+            {
+                return NotFound();
+            }
+            DateTime time = DateTime.Now;
+            
+            userModel.last_login = DateTime.Now;
+            await _context.SaveChangesAsync();
+
+            return Ok(new { message = "Last login updated" });
+        }
         [HttpGet("get-user/{id}")]
         public async Task<ActionResult<UserModel>> GetUserModel(string id)
         {

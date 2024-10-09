@@ -34,7 +34,7 @@
 
       <mat-form-field class="add-user-full-width">
         <mat-label>Vai trò</mat-label>
-        <mat-select formControlName="role" name="role">
+        <mat-select  formControlName="role" name="role" >
           <mat-option *ngFor="let role of roles" [value]="role.id_role">
             {{ role.name_role }}
           </mat-option>

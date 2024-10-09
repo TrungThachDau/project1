@@ -13,40 +13,59 @@ import {MatButton} from "@angular/material/button";
 import {MatIcon} from "@angular/material/icon";
 import {MatMenu, MatMenuItem, MatMenuTrigger} from "@angular/material/menu";
 import {MatToolbar} from "@angular/material/toolbar";
+import {FormControl, ReactiveFormsModule} from "@angular/forms";
+import {debounceTime} from "rxjs";
 
 @Component({
   selector: 'app-role-list',
   standalone: true,
-    imports: [
+  imports: [
 
-        NavbarComponent,
-        RouterLink,
-        NgForOf,
-        UserListSectionComponent,
-        MatButton,
-        MatIcon,
-        MatMenu,
-        MatMenuItem,
-        MatMenuTrigger,
-        MatToolbar,
-    ],
+    NavbarComponent,
+    RouterLink,
+    NgForOf,
+    UserListSectionComponent,
+    MatButton,
+    MatIcon,
+    MatMenu,
+    MatMenuItem,
+    MatMenuTrigger,
+    MatToolbar,
+    ReactiveFormsModule,
+  ],
   templateUrl: './role-list.component.html',
   styleUrl: './role-list.component.scss'
 })
 export class RoleListComponent implements OnInit{
   roles:any[] = [];
+  filteredRoles:any[] = [];
   constructor(private roleService: RoleService) { }
   readonly dialog = inject(MatDialog);
+  search = new FormControl('');
   ngOnInit(): void {
     this.roleService.getAll().subscribe(data => {
         //Load len table
         this.roles = data;
+        this.filteredRoles = this.roles;
       },
       error => {
         console.log(error);
       });
-  }
+    this.search.valueChanges.pipe(debounceTime(500)).subscribe(searchTerm => {
+      this.filteredRoles = this.filterRole(searchTerm);
 
+    }
+    );
+
+  }
+  filterRole(searchTerm: string | null): any[] {
+    if (!searchTerm) {
+      return this.roles;
+    }
+    return this.roles.filter(role =>
+      role.name_role.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+  }
   openDialog(id: number, exitAnimationDuration: string, enterAnimationDuration: string): void {
     const dialogRef = this.dialog.open(DeleteSubmitComponent, {
       width: '250px',
@@ -56,7 +75,6 @@ export class RoleListComponent implements OnInit{
     });
     dialogRef.afterClosed().subscribe(result => {
       this.deleteRole(id);
-
       this.ngOnInit();
     });
 

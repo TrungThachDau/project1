@@ -93,14 +93,19 @@ namespace UserManagementService.Controllers
                 var tokenRequest = new TokenRequest { IdToken = idToken };
 
                 // Gọi API xác minh token
-                var response = await _httpClient.PostAsJsonAsync("api/auth/verify-token", tokenRequest);
+                var response = await _httpClient.PostAsJsonAsync("https://localhost:7175/api/auth/verify-token", tokenRequest);
                 if (!response.IsSuccessStatusCode)
                 {
                     return Unauthorized(new { message = "Token không hợp lệ." });
                 }
                 var existingRolePermissions = await _context.RolePermissions
-                                                        .Where(p => p.id_role == id_role)
-                                                        .ToListAsync();
+                                             .Where(p => p.id_role == id_role)
+                                             .ToListAsync();
+
+                if (existingRolePermissions == null)
+                {
+                    throw new Exception("Failed to retrieve role permissions from database.");
+                }
 
                 // Xóa quyền hiện có
                 if (existingRolePermissions.Any())

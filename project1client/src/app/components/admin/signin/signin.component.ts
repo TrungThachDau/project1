@@ -56,6 +56,7 @@ export class SigninComponent implements OnInit{
       try {
         const response: any = await this.authService.verifyToken(IdToken).toPromise();
         if (response.uid) {
+
           sessionStorage.setItem('authToken', IdToken);
           sessionStorage.setItem('uid', response.uid);
           //Lay quyen luu vao session
@@ -69,7 +70,14 @@ export class SigninComponent implements OnInit{
               console.error(error);
             }
           }
-          this.router.navigate(['/dashboard']);
+          //Update last login sau do chuyen ve dashboard
+          try {
+            await this.authService.updateLastLogin(response.uid).toPromise();
+            this.router.navigate(['/dashboard']);
+          } catch (error) {
+            console.error(error);
+            this.handleError('Không thể kết nối với máy chủ. Vui lòng thử lại sau.');
+          }
         } else {
           this.handleError('Token không hợp lệ');
         }

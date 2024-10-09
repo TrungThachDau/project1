@@ -105,9 +105,9 @@ export class AuthorizationComponent implements OnInit {
 
         // So sánh các quyền trong `allPermissions` với các quyền đã được chọn
         this.allPermissions.forEach(permission => {
-          // So sánh `permission.id_permission` với `permissionsSelected.permission.id_permission`
-          permission.checked = this.permissionsSelected.some(selectedPermission =>
-            selectedPermission.permission.id_permission === permission.id_permission
+              // So sánh `permission.id_permission` với `permissionsSelected.permission.id_permission`
+              permission.checked = this.permissionsSelected.some(selectedPermission =>
+                selectedPermission.permission.id_permission === permission.id_permission
           );
         });
       },
@@ -154,6 +154,8 @@ export class AuthorizationComponent implements OnInit {
 
   }
   };
+
+  protected readonly Number = Number;
 }
 
 

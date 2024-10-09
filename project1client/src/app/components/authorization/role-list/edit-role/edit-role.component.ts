@@ -7,6 +7,7 @@ import {FormControl, FormGroup, ReactiveFormsModule} from "@angular/forms";
 import {RoleService} from "../../../../services/role.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {UserListSectionComponent} from "../../../management/list-section/user-list-section.component";
+import {MatToolbar} from "@angular/material/toolbar";
 
 @Component({
   selector: 'app-edit-role',
@@ -19,7 +20,8 @@ import {UserListSectionComponent} from "../../../management/list-section/user-li
         MatLabel,
         NavbarComponent,
         ReactiveFormsModule,
-        UserListSectionComponent
+        UserListSectionComponent,
+        MatToolbar
     ],
   templateUrl: './edit-role.component.html',
   styleUrl: './edit-role.component.scss'

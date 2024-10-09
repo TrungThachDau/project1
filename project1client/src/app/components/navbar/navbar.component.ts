@@ -23,7 +23,7 @@ export class NavbarComponent {
 
     { name: 'Quản lý', permission: 'USER_MANAGEMENT', path: '/management' },
     {name: 'Quản lý vật tư', permission: 'ITEM_MANAGEMENT', path: '/material-management'},
-    {name: 'Xử lí Excel', permission: 'EXCEL_PROCESSING', path: '/exel-processing'},
+    {name: 'Dự án', permission: 'PROJECT_PROCESSING', path: '/project-management'},
     {name: 'Phân tích chi phí', permission: 'COST_ANALYSIS', path: '/cost_analysis'},
   ];
 

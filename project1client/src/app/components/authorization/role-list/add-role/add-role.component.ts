@@ -9,6 +9,7 @@ import {RoleService} from "../../../../services/role.service";
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {UserListSectionComponent} from "../../../management/list-section/user-list-section.component";
+import {MatToolbar} from "@angular/material/toolbar";
 
 @Component({
   selector: 'app-add-role',
@@ -22,7 +23,8 @@ import {UserListSectionComponent} from "../../../management/list-section/user-li
         MatLabel,
         MatButton,
         ReactiveFormsModule,
-        UserListSectionComponent
+        UserListSectionComponent,
+        MatToolbar
     ],
   templateUrl: './add-role.component.html',
   styleUrl: './add-role.component.scss'
