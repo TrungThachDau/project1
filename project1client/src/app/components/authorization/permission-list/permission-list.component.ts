@@ -1,12 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {NavbarComponent} from "../../navbar/navbar.component";
-import {RoleService} from "../../../services/role.service";
 import {AuthorizationService} from "../../../services/authorization.service";
 import {NgForOf} from "@angular/common";
 import {UserListSectionComponent} from "../../management/list-section/user-list-section.component";
-import {MatButton} from "@angular/material/button";
+import {MatButtonModule} from "@angular/material/button";
 import {RouterLink} from "@angular/router";
-import {MatToolbar} from "@angular/material/toolbar";
+import {MatToolbarModule} from "@angular/material/toolbar";
 import {FormControl, ReactiveFormsModule} from "@angular/forms";
 
 @Component({
@@ -16,9 +15,9 @@ import {FormControl, ReactiveFormsModule} from "@angular/forms";
     NavbarComponent,
     NgForOf,
     UserListSectionComponent,
-    MatButton,
+    MatButtonModule,
     RouterLink,
-    MatToolbar,
+    MatToolbarModule,
     ReactiveFormsModule
   ],
   templateUrl: './permission-list.component.html',

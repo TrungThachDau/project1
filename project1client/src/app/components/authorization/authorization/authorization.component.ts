@@ -3,23 +3,19 @@ import { NavbarComponent } from "../../navbar/navbar.component";
 import {AsyncPipe, NgForOf, NgIf} from "@angular/common";
 import {RouterLink} from "@angular/router";
 import {UserListSectionComponent} from "../../management/list-section/user-list-section.component";
-import {MatFormField, MatFormFieldModule} from "@angular/material/form-field";
+import {MatFormFieldModule} from "@angular/material/form-field";
 import {
-  MatAutocomplete,
-  MatAutocompleteModule, MatAutocompleteSelectedEvent,
-  MatAutocompleteTrigger,
-  MatOption
+  MatAutocompleteModule, MatAutocompleteSelectedEvent
 } from "@angular/material/autocomplete";
 import {FormControl, FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {map, Observable, startWith} from "rxjs";
-import {MatInput, MatInputModule} from "@angular/material/input";
-import {MatCheckbox} from "@angular/material/checkbox";
-import {MatIcon} from "@angular/material/icon";
+import {MatInputModule} from "@angular/material/input";
+import {MatCheckboxModule} from "@angular/material/checkbox";
+import {MatIconModule} from "@angular/material/icon";
 import {RoleService} from "../../../services/role.service";
 import {AuthorizationService} from "../../../services/authorization.service";
-import {MatButton} from "@angular/material/button";
+import {MatButtonModule} from "@angular/material/button";
 import {MatSnackBar} from "@angular/material/snack-bar";
-import { idToken } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-authorization',
@@ -32,11 +28,11 @@ import { idToken } from '@angular/fire/auth';
     ReactiveFormsModule,
     AsyncPipe,
     NavbarComponent,
-    MatCheckbox,
-    MatIcon,
+    MatCheckboxModule,
+    MatIconModule,
     NgForOf,
     NgIf,
-    MatButton,
+    MatButtonModule,
     RouterLink,
     UserListSectionComponent,
   ],

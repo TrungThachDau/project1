@@ -5,14 +5,11 @@ import {RouterLink} from "@angular/router";
 import {NgForOf} from "@angular/common";
 import {DeleteSubmitComponent} from "../../delete-submit/delete-submit.component";
 import {MatDialog} from "@angular/material/dialog";
-import {
-  DialogAddUserSuccessfulComponent
-} from "../../management/user/add-user/dialog-add-user-successful/dialog-add-user-successful.component";
 import {UserListSectionComponent} from "../../management/list-section/user-list-section.component";
-import {MatButton} from "@angular/material/button";
-import {MatIcon} from "@angular/material/icon";
-import {MatMenu, MatMenuItem, MatMenuTrigger} from "@angular/material/menu";
-import {MatToolbar} from "@angular/material/toolbar";
+import {MatButtonModule} from "@angular/material/button";
+import {MatIconModule} from "@angular/material/icon";
+import {MatMenuModule} from "@angular/material/menu";
+import {MatToolbarModule} from "@angular/material/toolbar";
 import {FormControl, ReactiveFormsModule} from "@angular/forms";
 import {debounceTime} from "rxjs";
 
@@ -25,12 +22,10 @@ import {debounceTime} from "rxjs";
     RouterLink,
     NgForOf,
     UserListSectionComponent,
-    MatButton,
-    MatIcon,
-    MatMenu,
-    MatMenuItem,
-    MatMenuTrigger,
-    MatToolbar,
+    MatButtonModule,
+    MatIconModule,
+    MatMenuModule,
+    MatToolbarModule,
     ReactiveFormsModule,
   ],
   templateUrl: './role-list.component.html',
@@ -73,7 +68,7 @@ export class RoleListComponent implements OnInit{
       exitAnimationDuration,
       data: {name: "quyền"}
     });
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe(() => {
       this.deleteRole(id);
       this.ngOnInit();
     });
@@ -81,7 +76,7 @@ export class RoleListComponent implements OnInit{
   }
   deleteRole(id: number): void {
     try{
-      this.roleService.deleteRole(id).subscribe(data => {
+      this.roleService.deleteRole(id).subscribe(() => {
         this.ngOnInit();
       });
     }

@@ -1,20 +1,28 @@
 import {Component, OnInit} from '@angular/core';
 import {NavbarComponent} from "../../../navbar/navbar.component";
-import {MatCell, MatColumnDef, MatHeaderCell, MatHeaderRow, MatRow, MatTable} from "@angular/material/table";
-import {MatList, MatListItem} from "@angular/material/list";
+import {
+  MatCell,
+  MatColumnDef,
+  MatHeaderCell,
+  MatHeaderRow,
+  MatRow,
+  MatTableModule
+} from "@angular/material/table";
+import {MatListModule} from "@angular/material/list";
 import {UserListSectionComponent} from "../../list-section/user-list-section.component";
 import {UserService} from "../../../../services/user.service";
 import {CommonModule} from "@angular/common";
 import {RouterLink, RouterLinkActive} from "@angular/router";
-import {MatButton, MatFabButton} from "@angular/material/button";
-import {MatFormField, MatLabel} from "@angular/material/form-field";
-import {MatOption, MatSelect} from "@angular/material/select";
+import {MatButtonModule, MatFabButton} from "@angular/material/button";
+import {MatFormFieldModule, MatLabel} from "@angular/material/form-field";
+import {MatSelectModule} from "@angular/material/select";
 import {MatInput} from "@angular/material/input";
-import {MatIcon} from "@angular/material/icon";
-import {MatMenu, MatMenuItem, MatMenuTrigger} from "@angular/material/menu";
-import {MatToolbar} from "@angular/material/toolbar";
+import {MatIconModule} from "@angular/material/icon";
+import {MatMenuModule} from "@angular/material/menu";
+import {MatToolbarModule} from "@angular/material/toolbar";
 import {FormControl, ReactiveFormsModule} from "@angular/forms";
 import {debounceTime} from "rxjs";
+import {MatOptionModule} from "@angular/material/core";
 
 @Component({
   selector: 'app-all-user',
@@ -26,25 +34,22 @@ import {debounceTime} from "rxjs";
     MatHeaderRow,
     MatRow,
     MatColumnDef,
-    MatTable,
-    MatList,
-    MatListItem,
+    MatTableModule,
+    MatListModule,
     UserListSectionComponent,
     CommonModule,
     RouterLink,
-    MatButton,
-    MatFormField,
-    MatSelect,
-    MatOption,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatOptionModule,
     MatLabel,
     MatInput,
-    MatIcon,
-    MatMenuTrigger,
-    MatMenu,
-    MatMenuItem,
+    MatIconModule,
+    MatMenuModule,
     RouterLinkActive,
     MatFabButton,
-    MatToolbar,
+    MatToolbarModule,
     ReactiveFormsModule
   ],
   templateUrl: './all-user.component.html',

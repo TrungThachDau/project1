@@ -2,14 +2,14 @@ import {Component, OnInit} from '@angular/core';
 import {NavbarComponent} from "../../../navbar/navbar.component";
 import {NgForOf} from "@angular/common";
 import {RouterLink} from "@angular/router";
-import {MatFormField, MatLabel} from "@angular/material/form-field";
-import {MatInput} from "@angular/material/input";
-import {MatButton} from "@angular/material/button";
+import {MatFormFieldModule, MatLabel} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
+import {MatButtonModule} from "@angular/material/button";
 import {RoleService} from "../../../../services/role.service";
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {UserListSectionComponent} from "../../../management/list-section/user-list-section.component";
-import {MatToolbar} from "@angular/material/toolbar";
+import {MatToolbarModule} from "@angular/material/toolbar";
 
 @Component({
   selector: 'app-add-role',
@@ -18,13 +18,13 @@ import {MatToolbar} from "@angular/material/toolbar";
         NavbarComponent,
         NgForOf,
         RouterLink,
-        MatFormField,
-        MatInput,
+        MatFormFieldModule,
+        MatInputModule,
         MatLabel,
-        MatButton,
+        MatButtonModule,
         ReactiveFormsModule,
         UserListSectionComponent,
-        MatToolbar
+        MatToolbarModule
     ],
   templateUrl: './add-role.component.html',
   styleUrl: './add-role.component.scss'

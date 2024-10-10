@@ -2,18 +2,13 @@ import { Component } from '@angular/core';
 import {NavbarComponent} from "../../../navbar/navbar.component";
 import {UserListSectionComponent} from "../../list-section/user-list-section.component";
 import {
-  MatCard,
-  MatCardActions,
-  MatCardContent,
-  MatCardHeader, MatCardImage, MatCardModule,
-  MatCardSubtitle,
-  MatCardTitle
+  MatCardModule
 } from "@angular/material/card";
-import {MatIcon, MatIconModule} from "@angular/material/icon";
+import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
 import {ActivatedRoute, Router, RouterLink} from "@angular/router";
 import {MatToolbarModule} from "@angular/material/toolbar";
-import {MatMenu, MatMenuItem, MatMenuTrigger} from "@angular/material/menu";
+import {MatMenuModule} from "@angular/material/menu";
 import {UserService} from "../../../../services/user.service";
 import {RoleService} from "../../../../services/role.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
@@ -29,9 +24,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
     RouterLink,
     MatToolbarModule,
     MatIconModule,
-    MatMenu,
-    MatMenuItem,
-    MatMenuTrigger
+    MatMenuModule,
 
   ],
   templateUrl: './detail-user.component.html',

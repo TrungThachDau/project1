@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import {NavbarComponent} from "../../navbar/navbar.component";
 import {UserListSectionComponent} from "../list-section/user-list-section.component";
-import {MatToolbar} from "@angular/material/toolbar";
+import {MatToolbarModule} from "@angular/material/toolbar";
 import {FormsModule} from "@angular/forms";
-import {MatButton} from "@angular/material/button";
-import {MatIcon} from "@angular/material/icon";
-import {MatMenu, MatMenuItem, MatMenuTrigger} from "@angular/material/menu";
+import {MatButtonModule} from "@angular/material/button";
+import {MatIconModule} from "@angular/material/icon";
+import {MatMenuModule} from "@angular/material/menu";
 import {NgForOf} from "@angular/common";
 import {RouterLink} from "@angular/router";
 
@@ -15,15 +15,13 @@ import {RouterLink} from "@angular/router";
   imports: [
     NavbarComponent,
     UserListSectionComponent,
-    MatToolbar,
+    MatToolbarModule,
     FormsModule,
-    MatButton,
-    MatIcon,
-    MatMenu,
-    MatMenuItem,
+    MatButtonModule,
+    MatIconModule,
+    MatMenuModule,
     NgForOf,
-    RouterLink,
-    MatMenuTrigger
+    RouterLink
   ],
   templateUrl: './project.component.html',
   styleUrl: './project.component.scss'

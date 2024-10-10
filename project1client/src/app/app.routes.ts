@@ -15,6 +15,8 @@ import {AddRoleComponent} from "./components/authorization/role-list/add-role/ad
 import {EditRoleComponent} from "./components/authorization/role-list/edit-role/edit-role.component";
 import {DetailUserComponent} from "./components/management/user/detail-user/detail-user.component";
 import {ProjectComponent} from "./components/management/project/project.component";
+import {AddProjectComponent} from "./components/management/project/add-project/add-project.component";
+import {DetailProjectComponent} from "./components/management/project/detail-project/detail-project.component";
 
 export const routes: Routes = [
   {path:'',redirectTo:'/signIn',pathMatch:'full'},
@@ -33,5 +35,7 @@ export const routes: Routes = [
   {path:'management/role',component:RoleListComponent, title:'Danh sách vai trò',canActivate: [authGuard] ,data: { requiredPermissions: ['ROLE_MANAGEMENT'] }},// Áp dụng guard}
   {path:'management/role/add',component:AddRoleComponent, title:'Thêm vai trò',canActivate: [authGuard] ,data: { requiredPermissions: ['ROLE_MANAGEMENT'] }},// Áp dụng guard}
   {path:'management/role/edit/:id_role',component:EditRoleComponent, title:'Thêm vai trò',canActivate: [authGuard] ,data: { requiredPermissions: ['ROLE_MANAGEMENT'] }},// Áp dụng guard}
-  {path:'management/project',component:ProjectComponent, title:'Quản lý dự án',canActivate: [authGuard] ,data: { requiredPermissions: ['PROJECT_MANAGEMENT'] }}// Áp dụng
+  {path:'management/project',component:ProjectComponent, title:'Quản lý dự án',canActivate: [authGuard] ,data: { requiredPermissions: ['PROJECT_MANAGEMENT'] }},// Áp dụng
+  {path:'management/project/add',component:AddProjectComponent, title:'Thêm dự án',canActivate: [authGuard] ,data: { }},// Áp dụng
+  {path:'management/project/:id_project',component:DetailProjectComponent, title:'Chi tiết dự án',canActivate: [authGuard] ,data: { }},// Áp dụng
 ];

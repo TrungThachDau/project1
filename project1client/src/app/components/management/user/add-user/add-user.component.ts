@@ -2,10 +2,10 @@ import {Component, OnInit} from '@angular/core';
 import {NavbarComponent} from "../../../navbar/navbar.component";
 import {UserListSectionComponent} from "../../list-section/user-list-section.component";
 import {MatError, MatFormField, MatFormFieldModule, MatLabel} from "@angular/material/form-field";
-import {MatIcon, MatIconModule} from "@angular/material/icon";
+import {MatIconModule} from "@angular/material/icon";
 import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
-import {MatInput} from "@angular/material/input";
-import {MatButton, MatIconButton} from "@angular/material/button";
+import {MatInputModule} from "@angular/material/input";
+import {MatButtonModule} from "@angular/material/button";
 import {CommonModule} from "@angular/common";
 import { MatOption } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
@@ -13,11 +13,7 @@ import {RoleService} from "../../../../services/role.service";
 import {AuthService} from "../../../../services/auth.service";
 import {
   MatDialog,
-  MatDialogActions,
-  MatDialogClose,
-  MatDialogContent,
-  MatDialogModule,
-  MatDialogTitle
+  MatDialogModule
 } from "@angular/material/dialog";
 import {DialogAddUserSuccessfulComponent} from "./dialog-add-user-successful/dialog-add-user-successful.component";
 import { UserService } from '../../../../services/user.service';
@@ -30,10 +26,8 @@ import {RouterLink} from "@angular/router";
     NavbarComponent,
     UserListSectionComponent,
     MatFormField,
-    MatIcon,
     FormsModule,
-    MatInput,
-    MatIconButton,
+    MatInputModule,
     MatIconModule,
     MatLabel,
     CommonModule,
@@ -42,11 +36,7 @@ import {RouterLink} from "@angular/router";
     MatOption,
     MatSelectModule,
     MatFormFieldModule,
-    MatButton,
-    MatDialogClose,
-    MatDialogActions,
-    MatDialogContent,
-    MatDialogTitle,
+    MatButtonModule,
     MatDialogModule,
     RouterLink
   ],
@@ -62,9 +52,6 @@ export class AddUserComponent implements OnInit {
     role: new FormControl('', [Validators.required])
 
   });
-
-  emailFormControl = new FormControl('', [Validators.required, Validators.email]);
-  selectedValue: any;
   roles: any[] = [];
   password = this.generatePassword();
 

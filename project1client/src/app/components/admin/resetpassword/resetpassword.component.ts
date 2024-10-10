@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import {FormsModule} from "@angular/forms";
-import {MatButton} from "@angular/material/button";
-import {MatCard, MatCardContent, MatCardHeader, MatCardTitle} from "@angular/material/card";
+import {MatButtonModule} from "@angular/material/button";
+import {MatCardModule} from "@angular/material/card";
 import {MatFormField, MatLabel} from "@angular/material/form-field";
-import {MatInput} from "@angular/material/input";
-import {Router, RouterLink} from "@angular/router";
+import {MatInputModule} from "@angular/material/input";
+import {RouterLink} from "@angular/router";
 import {AuthService} from "../../../services/auth.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 
@@ -13,13 +13,10 @@ import {MatSnackBar} from "@angular/material/snack-bar";
   standalone: true,
     imports: [
         FormsModule,
-        MatButton,
-        MatCard,
-        MatCardContent,
-        MatCardHeader,
-        MatCardTitle,
+        MatButtonModule,
+        MatCardModule,
         MatFormField,
-        MatInput,
+        MatInputModule,
         MatLabel,
         RouterLink
     ],
@@ -32,7 +29,7 @@ export class ResetpasswordComponent {
   resetPassword() {
     if(this.email){
       this.authService.resetPassword(this.email)
-        .then((result:any)=>{
+        .then(()=>{
           this.snackBar.open('Một email khôi phục vừa được gửi đến bạn.', 'Đóng', {
             duration: 3000,
           });
