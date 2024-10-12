@@ -17,6 +17,8 @@ import {DetailUserComponent} from "./components/management/user/detail-user/deta
 import {ProjectComponent} from "./components/management/project/project.component";
 import {AddProjectComponent} from "./components/management/project/add-project/add-project.component";
 import {DetailProjectComponent} from "./components/management/project/detail-project/detail-project.component";
+import {BillComponent} from "./components/management/project/bill/bill.component";
+import {AddBillComponent} from "./components/management/project/bill/add-bill/add-bill.component";
 
 export const routes: Routes = [
   {path:'',redirectTo:'/signIn',pathMatch:'full'},
@@ -25,7 +27,7 @@ export const routes: Routes = [
   {path:'resetpassword',component:ResetpasswordComponent, title:'Đặt lại mật khẩu'},
   {path:'changepassword',component:ChangepasswordComponent, title:'Đổi mật khẩu'},
   {path:'management',redirectTo:'/management/user',pathMatch:'full'},
-  {path:'management/user',component:AllUserComponent, title:'Quản lý',canActivate: [authGuard], data: { requiredPermission: 'USER_MANAGEMENT' }},
+  {path:'management/user',component:AllUserComponent, title:'Quản lý',canActivate: [authGuard]},
   {path:'management/user/add',component:AddUserComponent, title:'Thêm người dùng',canActivate: [authGuard],data: { requiredPermissions: ['USER_MANAGEMENT', 'ADD_USER'] } }, // Áp dụng guard}
   {path:'management/authorization',component:AuthorizationComponent, title:'Phân quyền',canActivate: [authGuard],data: { requiredPermissions: ['USER_MANAGEMENT', 'AUTHORIZATION'] } }, // Áp dụng guard}
   {path:'management/all-role',component:AllRoleComponent, title:'Quản lí vai trò',canActivate: [authGuard],data: { requiredPermissions: ['ROLE_MANAGEMENT'] } },
@@ -38,4 +40,7 @@ export const routes: Routes = [
   {path:'management/project',component:ProjectComponent, title:'Quản lý dự án',canActivate: [authGuard] ,data: { requiredPermissions: ['PROJECT_MANAGEMENT'] }},// Áp dụng
   {path:'management/project/add',component:AddProjectComponent, title:'Thêm dự án',canActivate: [authGuard] ,data: { }},// Áp dụng
   {path:'management/project/:id_project',component:DetailProjectComponent, title:'Chi tiết dự án',canActivate: [authGuard] ,data: { }},// Áp dụng
+
+  {path:'management/project/:id_project/:id_bill',component:BillComponent, title:'Chi tiết hóa đơn',canActivate: [authGuard] ,data: { }},// Áp dụng
+  {path:'management/project/:id_project/add-bill',component:AddBillComponent, title:'Thêm hóa đơn',canActivate: [authGuard] ,data: { }},// Áp dụng
 ];

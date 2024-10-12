@@ -48,8 +48,8 @@ export class UserService {
       // Lỗi phía server
       errorMessage = `Server Error Code: ${error.status}\nMessage: ${error.message}`;
     }
-
     // Ghi log lỗi (hoặc bạn có thể gửi lỗi tới server để theo dõi)
+
     console.error(errorMessage);
 
     // Trả về Observable lỗi

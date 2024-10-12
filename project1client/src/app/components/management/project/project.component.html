@@ -11,7 +11,7 @@
     <div class="table-user">
       <div class="toolbar">
         <input class="input-search" type="search" placeholder="Tìm dự án" aria-label="Tìm người dùng">
-        <button mat-flat-button routerLink="/management/project/add">Dự án mới</button>
+        <button mat-flat-button (click)="addProject()">Dự án mới</button>
       </div>
 
       <table class="table">
