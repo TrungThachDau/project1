@@ -23,6 +23,7 @@ import {MatToolbarModule} from "@angular/material/toolbar";
 import {FormControl, ReactiveFormsModule} from "@angular/forms";
 import {debounceTime} from "rxjs";
 import {MatOptionModule} from "@angular/material/core";
+import {SpinnerService} from "../../../../services/spinner.service";
 
 @Component({
   selector: 'app-all-user',
@@ -59,13 +60,15 @@ export class AllUserComponent implements OnInit {
   users:any[] = [];
   filteredUsers:any[] = [];
   search = new FormControl('');
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private spinnerService :SpinnerService) { }
 
   ngOnInit(): void {
+    this.spinnerService.show();
     this.userService.getAll().subscribe(data => {
       //Load len table
       this.users = data;
       this.filteredUsers = data;
+      this.spinnerService.hide();
     },
     error => {
       console.log(error);

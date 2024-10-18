@@ -27,6 +27,10 @@ html {
   background-color: #6750A4 !important; /* Đổi màu nền của button */
   /* Đổi màu chữ thành trắng */
 }
+mat-spinner{
+  color: #6750A4!important;
+  width: 30px!important;
+}
 .mat-card {
   background-color: red;
   color: black; /* Màu chữ */

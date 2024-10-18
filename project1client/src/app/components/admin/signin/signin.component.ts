@@ -8,6 +8,8 @@ import { MatInputModule } from "@angular/material/input";
 import {Router, RouterLink} from "@angular/router";
 import {AuthService} from "../../../services/auth.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import {NgIf} from "@angular/common";
 
 
 @Component({
@@ -20,7 +22,9 @@ import {MatSnackBar} from "@angular/material/snack-bar";
     MatInputModule,
     ReactiveFormsModule,
     RouterLink,
-    FormsModule
+    FormsModule,
+    MatProgressSpinnerModule,
+    NgIf
   ],
   templateUrl: './signin.component.html',
   styleUrls: ['./signin.component.scss']
@@ -32,6 +36,7 @@ export class SigninComponent implements OnInit{
   });
 
   constructor(private authService : AuthService,private snackBar: MatSnackBar,private router : Router) {}  // Khởi tạo authService
+  isLoading =false;
 
   ngOnInit() {
     const token = sessionStorage.getItem('authToken');
@@ -44,6 +49,7 @@ export class SigninComponent implements OnInit{
     }
   }
   async signIn() {
+    this.isLoading = true;
     if (!this.signInForm.value.email || !this.signInForm.value.password) {
       this.handleError('Vui lòng nhập đầy đủ thông tin');
       return;
@@ -63,7 +69,7 @@ export class SigninComponent implements OnInit{
           const permission: any = await this.authService.getPermission(response.uid).toPromise();
           if (permission) {
             try {
-
+              this.isLoading = false;
               sessionStorage.setItem('permissions', JSON.stringify(permission));
               console.log(sessionStorage.getItem('permissions'));
             } catch (error) {
@@ -76,16 +82,20 @@ export class SigninComponent implements OnInit{
             this.router.navigate(['/dashboard']);
           } catch (error) {
             console.error(error);
+            this.isLoading = false;
             this.handleError('Không thể kết nối với máy chủ. Vui lòng thử lại sau.');
           }
         } else {
+          this.isLoading = false;
           this.handleError('Token không hợp lệ');
         }
       } catch (verifyError) {
+        this.isLoading = false;
         console.error('Error verifying token:', verifyError);
         this.handleError('Không thể kết nối với máy chủ. Vui lòng thử lại sau.');
       }
     } catch (loginError:any) {
+      this.isLoading = false;
       console.error('Login error:', loginError);
       this.handleError('Đăng nhập thất bại: '+loginError.code);
     }

@@ -18,7 +18,15 @@
       </div>
     </section>
 
+
+
+
     <span class="example-spacer"></span>
+    <div class="spinner-container" *ngIf="isLoading">
+      <mat-spinner diameter="40"></mat-spinner>
+      <a class="processing-text">{{loadingMessage}}</a>
+    </div>
+
 
     <button mat-button [matMenuTriggerFor]="menu">
       <mat-icon>person</mat-icon>

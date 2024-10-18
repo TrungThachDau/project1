@@ -18,6 +18,7 @@ import {
 import {DialogAddUserSuccessfulComponent} from "./dialog-add-user-successful/dialog-add-user-successful.component";
 import { UserService } from '../../../../services/user.service';
 import {RouterLink} from "@angular/router";
+import {SpinnerService} from "../../../../services/spinner.service";
 
 @Component({
   selector: 'app-add-user',
@@ -56,7 +57,7 @@ export class AddUserComponent implements OnInit {
   password = this.generatePassword();
 
 
-  constructor(private userService: UserService,private authService: AuthService, private roleService: RoleService,public dialog: MatDialog) {
+  constructor(private userService: UserService,private authService: AuthService, private roleService: RoleService,public dialog: MatDialog, private spinerService: SpinnerService) {
   }
 
   ngOnInit(): void {
@@ -74,6 +75,7 @@ export class AddUserComponent implements OnInit {
 
   async addUser() {
     try {
+      this.spinerService.show('Đang thêm...');
       // Gọi API đăng ký với authService
       const email = this.addUserForm.value.email as string;
       const response = await this.authService.signUp(email, this.password);
@@ -91,19 +93,21 @@ export class AddUserComponent implements OnInit {
       this.userService.postUser(userData).subscribe({
         next: (response) => {
           console.log('User created successfully:', response);
-
+          this.spinerService.hide();
           // Mở dialog khi đăng ký thành công
           this.dialog.open(DialogAddUserSuccessfulComponent, {
             data: { username: this.addUserForm.value.email, password: this.password } // Chỉ gửi thông tin không nhạy cảm
           });
         },
         error: (error) => {
+          this.spinerService.hide();
           console.error('Error creating user:', error);
           // Hiển thị thông báo lỗi cho người dùng, ví dụ:
           // this.snackBar.open('Error creating user', 'Close', { duration: 3000 });
         }
       });
     } catch (e) {
+      this.spinerService.hide();
       // Xử lý lỗi nếu có và thông báo cho người dùng
       console.error('Đăng ký thất bại:', e);
       // Hiển thị thông báo lỗi cho người dùng, ví dụ:

@@ -1,14 +1,14 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\project1\\project1\\project1server\\",
+  "WorkspaceRootPath": "D:\\GitHub\\project1\\project1server\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{6417F48B-A565-47E6-A9DF-0E54C455830F}|UserManagementService\\UserManagementService.csproj|d:\\project1\\project1\\project1server\\usermanagementservice\\models\\permissionmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6417F48B-A565-47E6-A9DF-0E54C455830F}|UserManagementService\\UserManagementService.csproj|solutionrelative:usermanagementservice\\models\\permissionmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6417F48B-A565-47E6-A9DF-0E54C455830F}|UserManagementService\\UserManagementService.csproj|d:\\github\\project1\\project1server\\usermanagementservice\\dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{6417F48B-A565-47E6-A9DF-0E54C455830F}|UserManagementService\\UserManagementService.csproj|solutionrelative:usermanagementservice\\dockerfile||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6417F48B-A565-47E6-A9DF-0E54C455830F}|UserManagementService\\UserManagementService.csproj|d:\\project1\\project1\\project1server\\usermanagementservice\\models\\rolemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6417F48B-A565-47E6-A9DF-0E54C455830F}|UserManagementService\\UserManagementService.csproj|solutionrelative:usermanagementservice\\models\\rolemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6417F48B-A565-47E6-A9DF-0E54C455830F}|UserManagementService\\UserManagementService.csproj|d:\\github\\project1\\project1server\\usermanagementservice\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{6417F48B-A565-47E6-A9DF-0E54C455830F}|UserManagementService\\UserManagementService.csproj|solutionrelative:usermanagementservice\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     }
   ],
   "DocumentGroupContainers": [
@@ -23,27 +23,27 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "PermissionModel.cs",
-              "DocumentMoniker": "D:\\project1\\project1\\project1server\\UserManagementService\\Models\\PermissionModel.cs",
-              "RelativeDocumentMoniker": "UserManagementService\\Models\\PermissionModel.cs",
-              "ToolTip": "D:\\project1\\project1\\project1server\\UserManagementService\\Models\\PermissionModel.cs",
-              "RelativeToolTip": "UserManagementService\\Models\\PermissionModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAwAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-05T07:46:50.108Z",
+              "Title": "Dockerfile",
+              "DocumentMoniker": "D:\\GitHub\\project1\\project1server\\UserManagementService\\Dockerfile",
+              "RelativeDocumentMoniker": "UserManagementService\\Dockerfile",
+              "ToolTip": "D:\\GitHub\\project1\\project1server\\UserManagementService\\Dockerfile",
+              "RelativeToolTip": "UserManagementService\\Dockerfile",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAACsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-10-18T14:13:34.965Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "RoleModel.cs",
-              "DocumentMoniker": "D:\\project1\\project1\\project1server\\UserManagementService\\Models\\RoleModel.cs",
-              "RelativeDocumentMoniker": "UserManagementService\\Models\\RoleModel.cs",
-              "ToolTip": "D:\\project1\\project1\\project1server\\UserManagementService\\Models\\RoleModel.cs",
-              "RelativeToolTip": "UserManagementService\\Models\\RoleModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-05T07:45:43.908Z",
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\GitHub\\project1\\project1server\\UserManagementService\\appsettings.json",
+              "RelativeDocumentMoniker": "UserManagementService\\appsettings.json",
+              "ToolTip": "D:\\GitHub\\project1\\project1server\\UserManagementService\\appsettings.json",
+              "RelativeToolTip": "UserManagementService\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-10-18T14:08:04.985Z",
               "EditorCaption": ""
             }
           ]
