@@ -48,59 +48,93 @@ export class SigninComponent implements OnInit{
       this.router.navigate(['/dashboard']);
     }
   }
+  // async signIn() {
+  //   this.isLoading = true;
+  //   if (!this.signInForm.value.email || !this.signInForm.value.password) {
+  //     this.handleError('Vui lòng nhập đầy đủ thông tin');
+  //     return;
+  //   }
+
+  //   try {
+  //     const result: any = await this.authService.signIn(this.signInForm.value.email, this.signInForm.value.password);
+  //     const IdToken = result.user.accessToken;
+
+  //     try {
+  //       const response: any = await this.authService.verifyToken(IdToken).toPromise();
+  //       if (response.uid) {
+
+  //         sessionStorage.setItem('authToken', IdToken);
+  //         sessionStorage.setItem('uid', response.uid);
+  //         //Lay quyen luu vao session
+  //         const permission: any = await this.authService.getPermission(response.uid).toPromise();
+  //         if (permission) {
+  //           try {
+  //             this.isLoading = false;
+  //             sessionStorage.setItem('permissions', JSON.stringify(permission));
+  //             console.log(sessionStorage.getItem('permissions'));
+  //           } catch (error) {
+  //             console.error(error);
+  //           }
+  //         }
+  //         //Update last login sau do chuyen ve dashboard
+  //         try {
+  //           await this.authService.updateLastLogin(response.uid).toPromise();
+  //           this.router.navigate(['/dashboard']);
+  //         } catch (error) {
+  //           console.error(error);
+  //           this.isLoading = false;
+  //           this.handleError('Không thể kết nối với máy chủ. Vui lòng thử lại sau.');
+  //         }
+  //       } else {
+  //         this.isLoading = false;
+  //         this.handleError('Token không hợp lệ');
+  //       }
+  //     } catch (verifyError) {
+  //       this.isLoading = false;
+  //       console.error('Error verifying token:', verifyError);
+  //       this.handleError('Không thể kết nối với máy chủ. Vui lòng thử lại sau.');
+  //     }
+  //   } catch (loginError:any) {
+  //     this.isLoading = false;
+  //     console.error('Login error:', loginError);
+  //     this.handleError('Đăng nhập thất bại: '+loginError.code);
+  //   }
+  // }
   async signIn() {
-    this.isLoading = true;
-    if (!this.signInForm.value.email || !this.signInForm.value.password) {
-      this.handleError('Vui lòng nhập đầy đủ thông tin');
-      return;
-    }
-
-    try {
-      const result: any = await this.authService.signIn(this.signInForm.value.email, this.signInForm.value.password);
-      const IdToken = result.user.accessToken;
-
-      try {
-        const response: any = await this.authService.verifyToken(IdToken).toPromise();
-        if (response.uid) {
-
-          sessionStorage.setItem('authToken', IdToken);
-          sessionStorage.setItem('uid', response.uid);
-          //Lay quyen luu vao session
-          const permission: any = await this.authService.getPermission(response.uid).toPromise();
-          if (permission) {
-            try {
-              this.isLoading = false;
-              sessionStorage.setItem('permissions', JSON.stringify(permission));
-              console.log(sessionStorage.getItem('permissions'));
-            } catch (error) {
-              console.error(error);
-            }
-          }
-          //Update last login sau do chuyen ve dashboard
-          try {
-            await this.authService.updateLastLogin(response.uid).toPromise();
-            this.router.navigate(['/dashboard']);
-          } catch (error) {
-            console.error(error);
-            this.isLoading = false;
-            this.handleError('Không thể kết nối với máy chủ. Vui lòng thử lại sau.');
-          }
-        } else {
-          this.isLoading = false;
-          this.handleError('Token không hợp lệ');
-        }
-      } catch (verifyError) {
-        this.isLoading = false;
-        console.error('Error verifying token:', verifyError);
-        this.handleError('Không thể kết nối với máy chủ. Vui lòng thử lại sau.');
-      }
-    } catch (loginError:any) {
-      this.isLoading = false;
-      console.error('Login error:', loginError);
-      this.handleError('Đăng nhập thất bại: '+loginError.code);
-    }
+  this.isLoading = true;
+  if (!this.signInForm.value.email || !this.signInForm.value.password) {
+    this.handleError('Vui lòng nhập đầy đủ thông tin');
+    this.isLoading = false;
+    return;
   }
 
+  try {
+    const result: any = await this.authService.signIn(this.signInForm.value.email, this.signInForm.value.password);
+    const IdToken = result.user.accessToken;
+    const response: any = await this.authService.verifyToken(IdToken).toPromise();
+
+    if (response.uid) {
+      sessionStorage.setItem('authToken', IdToken);
+      sessionStorage.setItem('uid', response.uid);
+
+      const permission: any = await this.authService.getPermission(response.uid).toPromise();
+      if (permission) {
+        sessionStorage.setItem('permissions', JSON.stringify(permission));
+        console.log(sessionStorage.getItem('permissions'));
+      }
+
+      await this.authService.updateLastLogin(response.uid).toPromise();
+      this.router.navigate(['/dashboard']);
+    } else {
+      this.handleError('Token không hợp lệ');
+    }
+  } catch (error) {
+    console.error('Error:', error);
+    this.handleError('Không thể kết nối với máy chủ. Vui lòng thử lại sau.');
+  } finally {
+    this.isLoading = false;
+  }
+}
   private handleError(message: string) {
     this.snackBar.open(message, 'Đóng', { duration: 3000 });
   }
