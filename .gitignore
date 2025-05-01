@@ -1,0 +1,7 @@
+project1server/UserManagementService/bin
+project1server/UserManagementService/obj
+project1server/ApiGateway/obj
+project1server/ApiGateway/bin
+project1client/node_modules
+
+
