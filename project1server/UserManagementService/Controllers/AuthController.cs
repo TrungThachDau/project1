@@ -3,6 +3,7 @@ using FirebaseAdmin.Auth;
 using System.Threading.Tasks;
 using System.Text.Json.Serialization;
 using Google.Apis.Auth.OAuth2.Requests;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using UserManagementService.Data;
 using UserManagementService.Models;
@@ -16,40 +17,21 @@ namespace UserManagementService.Controllers
     }
     [Route("api/[controller]")]
     [ApiController]
-    public class AuthController : ControllerBase
+    public class AuthController(IAuthService authService) : ControllerBase
     {
-        private readonly AppDbContext _context;
-        private readonly IAuthService _authService;
-
-        public AuthController(AppDbContext context, IAuthService authService)
-        {
-            _context = context;
-            _authService = authService;
-        }
         [HttpPost("verify-token")]
-        public async Task<IActionResult> VerifyToken([FromBody] TokenRequest request)
+        public async Task<IActionResult> VerifyToken([FromBody] string request)
         {
-            try
-            {
-                // Xác thực token Firebase
-                FirebaseToken decodedToken = await FirebaseAuth.DefaultInstance.VerifyIdTokenAsync(request.IdToken);
-                string uid = decodedToken.Uid;
-
-                // Token hợp lệ
-                return Ok(new { message = "Token is valid", uid });
-            }
-            catch (FirebaseAuthException ex)
-            {
-                // Token không hợp lệ hoặc gặp lỗi khác
-                return Unauthorized(new { message = "Token is invalid", error = ex.Message });
-            }
+            var query = await authService.VerifyToken(request);
+            return Ok(new { message = "Token verified successfully", uid = query });
         }
+        [Authorize]
         [HttpPut("update-last-login/{id}")]
         public async Task<IActionResult> UpdateLastLogin(string id)
         {
             try
             {
-                await _authService.UpdateLastLogin(id);
+                await authService.UpdateLastLogin(id);
                 return Ok();
             }
             catch (Exception ex)
@@ -58,6 +40,7 @@ namespace UserManagementService.Controllers
             }
            
         }
+        [Authorize]
         [HttpGet("get-user")]
         public async Task<ActionResult<UserModel>> GetUser()
         {
@@ -70,33 +53,23 @@ namespace UserManagementService.Controllers
 
             var idToken = authHeader.Replace("Bearer ", "");
 
-            var query = await _authService.GetUser(idToken);
+            var query = await authService.GetUser(idToken);
             return Ok(query);
         }
-        [HttpGet("get-permission/{uid}")]
-        public async Task<ActionResult<UserModel>> GetPermission(string uid)
+        [Authorize]
+        [HttpGet("get-permission")]
+        public async Task<ActionResult<UserModel>> GetPermission()
         {
-            var user = await _context.Users.FindAsync(uid);
+            var authHeader = Request.Headers["Authorization"].ToString();
 
-            if (user == null)
+            if (string.IsNullOrEmpty(authHeader) || !authHeader.StartsWith("Bearer "))
             {
-                return NotFound("User not found.");
+                return Unauthorized(new { message = "Missing or invalid Authorization header" });
             }
-            //Lay rolepermision cua role 1
-            var rolePermission = await _context.RolePermissions
-                .Where(rp => rp.id_role == user.id_role)
-                .ToListAsync();
-            if (rolePermission == null || !rolePermission.Any())
-            {
-                return NotFound("User doesn't have any permissions.");
-            }
-            var permission = await _context.Permissions
-                    .Where(p => rolePermission
-                    .Select(rp => rp.id_permission)
-                    .Contains(p.id_permission))
-                    .Select(p => p.permission_name.Trim())
-                    .ToListAsync();
-            return Ok(permission);
+
+            var idToken = authHeader.Replace("Bearer ", "");
+            var query = await authService.GetPermission(idToken);
+            return Ok(query);
         }
         //[Route("get-user/{uid}")] // Use Route attribute for clear path definition
         //[HttpGet("{id}")] // Maintain HttpGet for GET requests
@@ -138,11 +111,5 @@ namespace UserManagementService.Controllers
         //    return NotFound();
         //}
     }
-
-    public class TokenRequest
-    {
-        public string IdToken { get; set; }
-    }
-
 
 }
