@@ -1,0 +1,47 @@
+<app-navbar></app-navbar>
+<div class="container-fluid">
+  <div class="list-section">
+  <app-user-list-section></app-user-list-section>
+  </div>
+  <div class="content-section">
+    <h6>Thêm người dùng</h6>
+    <div>
+      <form class="add-user-form" [formGroup]="addUserForm" (ngSubmit)="addUser()">
+        <mat-form-field class="add-project-full-width">
+          <mat-label>Họ và tên</mat-label>
+          <input formControlName="name" name="name" matInput placeholder="Vd. Nguyễn Văn A">
+        </mat-form-field>
+
+        <mat-form-field class="add-project-full-width">
+          <mat-label>Email</mat-label>
+          <input formControlName="email" name="email" matInput placeholder="Vd. abc@xyz.com">
+        </mat-form-field>
+
+        <mat-form-field class="add-project-full-width">
+          <mat-label>Địa chỉ</mat-label>
+          <textarea formControlName="address" name="address" matInput placeholder="Vd. 100 Tự Do"></textarea>
+        </mat-form-field>
+
+        <mat-form-field class="add-project-full-width">
+          <mat-label>Số điện thoại</mat-label>
+          <span matTextPrefix>+84 &nbsp;</span>
+          <input formControlName="phone" name="phone" type="tel" matInput placeholder="555-555-1234">
+          <mat-icon matSuffix>mode_edit</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field class="add-project-full-width">
+          <mat-label>Vai trò</mat-label>
+          <mat-select formControlName="role" name="role">
+            <mat-option *ngFor="let role of roles" [value]="role.id_role">
+              {{ role.name_role }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <button mat-flat-button type="submit">Thêm</button>
+        <a mat-button routerLink="/management/user">Quay lại</a>
+      </form>
+    </div>
+
+
+  </div>
+</div>

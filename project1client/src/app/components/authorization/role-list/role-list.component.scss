@@ -1,0 +1,36 @@
+
+.table-user{
+  padding:20px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  background-color: white;
+}
+.table-user .toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.table thead tr th{
+  font-size: 0.875rem;
+  color: #78829d;
+  text-align: left;
+}
+.table tbody tr td {
+  font-size: 0.875rem;
+  color: #78829d;
+  text-align: left; /* Căn giữa chữ */
+  vertical-align: middle; /* Căn giữa theo chiều dọc */
+}
+
+.mat-form-field{
+  background-color: white;
+}
+.status{
+  color: black;
+  padding: 2px 5px;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  background-color: #f9f9f9;
+  width:fit-content;
+}

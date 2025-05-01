@@ -1,0 +1,63 @@
+<app-navbar></app-navbar>
+<div class="container-fluid">
+  <div class="list-section">
+    <app-user-list-section></app-user-list-section>
+  </div>
+  <div class="content-section">
+    <mat-toolbar class="toolbar2">
+      <span>Quản lý dự án</span>
+      <span class="example-spacer"></span>
+    </mat-toolbar>
+    <div class="table-user">
+      <div class="toolbar">
+        <input class="input-search" type="search" placeholder="Tìm dự án" aria-label="Tìm người dùng">
+        <button mat-flat-button (click)="addProject()">Dự án mới</button>
+      </div>
+
+      <table class="table">
+        <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">TÊN DỰ ÁN</th>
+          <th scope="col" style="width:20%">TRƯỞNG NHÓM</th>
+          <th scope="col">TRẠNG THÁI</th>
+          <th scope="col">HÀNH ĐỘNG</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr >
+          <td>1s</td>
+          <td><p class="name" routerLink="/management/user/">Dự án A
+            <br/>
+            <a class="email"></a>
+          </p>
+
+          </td>
+
+          <td>Trung</td>
+          <td>
+            <div class="status">
+              <b>Đang lên kế hoạch</b>
+            </div>
+          </td>
+
+          <td>
+            <button mat-stroked-button [matMenuTriggerFor]="menu">
+              <mat-icon>arrow_drop_down</mat-icon>
+              <a>Hành động</a>
+            </button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item routerLink="/management/user/">Xem</button>
+              <button mat-menu-item routerLink="/management/user/edit/">Sửa</button>
+              <button mat-menu-item disabled>Xóa</button>
+              <button mat-menu-item disabled>Chặn</button>
+            </mat-menu>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+</div>

@@ -1,0 +1,68 @@
+.table-border{
+  border-radius:20px;
+  border: 1px solid #ccc;
+}
+.uid-column {
+  width: 10% !important; /* Chiều rộng cột UID */
+  text-align: center; /* Canh giữa nội dung trong cột */
+}
+.table-user{
+  padding:20px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  background-color: white;
+}
+.table-user .toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.table thead tr th{
+  font-size: 0.875rem;
+  color: black;
+  text-align: left;
+}
+.table tbody tr td {
+  font-size: 0.875rem;
+  color: #78829d;
+  text-align: left; /* Căn giữa chữ */
+  vertical-align: middle; /* Căn giữa theo chiều dọc */
+}
+
+.mat-form-field{
+  background-color: white;
+}
+.status{
+  color: black;
+  padding: 2px 5px;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  background-color: #f9f9f9;
+  width:fit-content;
+}
+.name{
+  color:#2356d7;
+
+  font-weight: bold;
+}
+.name:hover{
+  color:#38337f;
+  cursor: pointer;
+}
+.email{
+  color: #78829d;
+  text-decoration: none;
+  font-weight: normal;
+}
+.mat-toolbar{
+  background-color:white!important;
+  padding:0;
+}
+
+
+
+
+
+

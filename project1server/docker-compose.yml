@@ -1,0 +1,16 @@
+version: '3.4'
+
+services:
+  apigateway:
+    image: apigateway
+    ports:
+      - "7278:8081"  # Map port 7278 to port 80 của container
+    depends_on:
+      - usermanagement
+
+  usermanagement:
+    image: usermanagement
+    build:
+      context: ./UserManagement
+    ports:
+      - "7175:8081"  # Map port 7179 to port 80 của container

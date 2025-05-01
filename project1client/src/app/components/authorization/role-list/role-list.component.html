@@ -1,0 +1,49 @@
+<app-navbar></app-navbar>
+<div class="container-fluid">
+  <div class="list-section">
+    <app-user-list-section></app-user-list-section>
+  </div>
+  <div class="content-section">
+    <mat-toolbar class="toolbar2">
+      <span>Quản lý vai trò</span>
+      <span class="example-spacer"></span>
+    </mat-toolbar>
+    <div class="table-user">
+
+      <div class="toolbar">
+        <input [formControl]="search" class="input-search" type="search" placeholder="Tìm vai trò" aria-label="Tìm người dùng">
+        <button mat-flat-button routerLink="/management/role/add">Thêm vai trò mới</button>
+      </div>
+
+      <table class="table">
+        <thead>
+        <tr>
+          <th scope="col" style="width:15%">MÃ VAI TRÒ</th>
+          <th scope="col" style="width:20%">TÊN</th>
+          <th scope="col" style="width:40%" >MÔ TẢ</th>
+          <th scope="col" style="width:20%">HÀNH ĐỘNG</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let role of filteredRoles">
+          <td class="uid-column">{{role.id_role}}</td>
+          <td>{{role.name_role}}</td>
+          <td>{{role.description}}</td>
+          <td>
+            <button mat-stroked-button [matMenuTriggerFor]="menu">
+              <mat-icon>arrow_drop_down</mat-icon>
+              <a>Hành động</a>
+            </button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item routerLink="/management/role/edit/{{role.id_role}}">Sửa</button>
+              <button mat-menu-item routerLink="routerLink" (click)="openDialog(role.id_role, '300ms', '300ms')">Xóa</button>
+              <button mat-menu-item disabled>Chặn</button>
+            </mat-menu>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>

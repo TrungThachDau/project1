@@ -1,0 +1,87 @@
+<app-navbar></app-navbar>
+<div class="container-fluid">
+  <div class="list-section">
+    <app-user-list-section></app-user-list-section>
+  </div>
+  <div class="content-section">
+    <mat-toolbar class="toolbar2">
+      <span>Thông tin hóa đơn</span>
+      <span class="example-spacer"></span>
+      <button mat-flat-button [matMenuTriggerFor]="menu">
+        <a>Hành động</a>
+      </button>
+      <mat-menu #menu="matMenu">
+
+        <button mat-menu-item routerLink="/management/user/edit/">Sửa</button>
+        <button mat-menu-item disabled>Xóa</button>
+        <button mat-menu-item disabled>Chặn</button>
+      </mat-menu>
+    </mat-toolbar>
+    <mat-card appearance="outlined">
+      <mat-card-content><b>Tên dự án: </b>Dự án thử nghiệm</mat-card-content>
+      <mat-card-content><b>Địa chỉ: </b>Saigon</mat-card-content>
+      <mat-card-content><b>Hóa đơn: </b>Số 6</mat-card-content>
+      <mat-card-content><b>Mô tả: </b>MECHANICAL & ELECTRICAL WORKS / CÔNG TÁC CƠ ĐIỆN</mat-card-content>
+      <mat-card-content><b>Ngày kết thúc: </b>09/10/2025</mat-card-content>
+      <mat-card-content><b>Trạng thái: </b>Đang lên kế hoạch</mat-card-content>
+    </mat-card>
+    <mat-toolbar class="toolbar2">
+      <span>Hóa đơn</span>
+      <span class="example-spacer"></span>
+    </mat-toolbar>
+    <div class="table-user">
+      <div class="toolbar">
+        <input class="input-search" type="search" placeholder="Tìm dự án" aria-label="Tìm người dùng">
+        <button mat-flat-button routerLink="/management/project/add">Hóa đơn mới</button>
+      </div>
+
+      <table class="table">
+        <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">NỘI DUNG CÔNG VIỆC</th>
+          <th scope="col" >THÀNH TIỀN</th>
+          <th scope="col">GHI CHÚ</th>
+          <th scope="col">HÀNH ĐỘNG</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr >
+          <td>1</td>
+          <td><p class="name" routerLink="/management/user/">ELECTRICAL SYSTEM
+            <br/>
+            <a>Hệ thống điện</a>
+          </p>
+
+          </td>
+
+          <td>1.000.000 VND</td>
+          <td>
+            <div class="status">
+              <b>Đang lên kế hoạch</b>
+            </div>
+          </td>
+          <td>
+            <button mat-stroked-button [matMenuTriggerFor]="menu">
+              <mat-icon>arrow_drop_down</mat-icon>
+              <a>Hành động</a>
+            </button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item routerLink="/management/user/">Xem</button>
+              <button mat-menu-item routerLink="/management/user/edit/">Sửa</button>
+              <button mat-menu-item disabled>Xóa</button>
+              <button mat-menu-item disabled>Chặn</button>
+            </mat-menu>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <br/>
+    <mat-card appearance="outlined">
+      <mat-card-content>
+        <p>Tổng số tiền: 100.000.000 VND</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

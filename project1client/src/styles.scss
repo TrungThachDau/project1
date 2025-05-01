@@ -1,0 +1,83 @@
+@use '@angular/material' as mat;
+@use './m3-theme';
+
+@include mat.core();
+
+html {
+  // Apply the light theme by default
+  @include mat.core-theme(m3-theme.$light-theme);
+  @include mat.button-theme(m3-theme.$light-theme);
+
+  // When using system variables, remember to provide values for them
+  // or uncomment the lines below to generate them from the theme.
+  @include mat.system-level-colors(m3-theme.$light-theme);
+  @include mat.system-level-typography(m3-theme.$light-theme);
+}
+.container-fluid {
+  display: flex;
+  height: 88vh; /* Chiều cao của container */
+  box-sizing: border-box; /* Đảm bảo padding và border không làm thay đổi kích thước */
+}
+.mat-toolbar {
+  background-color: #EADDFF!important;
+  color: black; /* Hoặc tùy chỉnh màu chữ */
+}
+.active-button {
+  color:white!important;
+  background-color: #6750A4 !important; /* Đổi màu nền của button */
+  /* Đổi màu chữ thành trắng */
+}
+mat-spinner{
+  color: #6750A4!important;
+  width: 30px!important;
+}
+.mat-card {
+  background-color: red;
+  color: black; /* Màu chữ */
+}
+.table-user{
+  background-color: #faf9fd!important;
+}
+.table tr th{
+  background-color: #faf9fd!important;
+  color:black!important;
+}
+.table tr td{
+  background-color: #faf9fd!important;
+}
+.toolbar2{
+  background-color: white!important;
+  padding:0!important;
+
+}
+.list-section {
+  flex: 0 0 20%; /* Chiếm 30% chiều rộng của container */
+  padding-left: 10px; /* Xóa padding */
+  padding-right:10px;
+  padding-top:5px;
+  border-right: 1px solid #ccc; /* Viền bên phải của phần danh sách */
+  overflow-y: auto; /* Thêm thanh cuộn nếu nội dung dài hơn chiều cao của phần */
+  box-sizing: border-box; /* Đảm bảo padding và border không làm thay đổi kích thước */
+}
+.content-section {
+  padding-top:25px;
+  padding-left:30px;
+  padding-right:15px;
+  width: 100%;
+  flex: 0 0 80%; /* Chiếm 70% chiều rộng của container */;
+  overflow-y: auto; /* Thêm thanh cuộn nếu nội dung dài hơn chiều cao của phần */
+  box-sizing: border-box; /* Đảm bảo padding và border không làm thay đổi kích thước */
+}
+.input-search{
+  border-radius:20px;
+  border:none;
+  padding: 5px 10px;
+  height: 40px;
+  width: 300px;
+  background-color: #EADDFF;
+}
+.input-search:focus{
+  outline: none;
+  background-color: #cccccc;
+
+}

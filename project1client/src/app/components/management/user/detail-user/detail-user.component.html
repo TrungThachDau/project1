@@ -1,0 +1,72 @@
+<app-navbar></app-navbar>
+<div class="container-fluid">
+  <div class="list-section">
+    <app-user-list-section></app-user-list-section>
+  </div>
+  <div class="content-section">
+    <mat-toolbar class="toolbar2">
+      <span>Thông tin dự án</span>
+      <span class="example-spacer"></span>
+      <button mat-flat-button [matMenuTriggerFor]="menu">
+        <a>Hành động</a>
+      </button>
+      <mat-menu #menu="matMenu">
+
+        <button mat-menu-item routerLink="/management/user/edit/{{user.id_user}}">Sửa</button>
+        <button mat-menu-item disabled>Xóa</button>
+        <button mat-menu-item disabled>Chặn</button>
+      </mat-menu>
+    </mat-toolbar>
+
+    <mat-card class="example-card" appearance="outlined">
+      <div class="card-container">
+        <!-- Phần hồ sơ bên trái -->
+        <div class="avatar-card">
+          <mat-card-header class="header">
+            <div mat-card-avatar class="example-header-image"></div>
+          </mat-card-header>
+          <p><mat-card-title class="title">{{user.name}}</mat-card-title></p>
+          <p><mat-card-subtitle class="subtitle"><a>{{user.email}}</a></mat-card-subtitle></p>
+        </div>
+
+        <!-- Phần thông tin bên phải -->
+        <div class="content-card">
+          <mat-card-content>
+            <p>
+              <b>ID người dùng </b>
+
+              <a>{{user.id_user}}</a>
+            </p>
+            <p>
+              <b>Vai trò </b>
+
+              <a>{{ user.role.name_role}}</a>
+            </p>
+            <p>
+              <b>Địa chỉ </b>
+
+              <a>{{user.address}}</a>
+            </p>
+            <p>
+              <b>Số điện thoại </b>
+
+              <a>{{ user.phone }}</a>
+            </p>
+            <p>
+              <b>Đăng nhập lần cuối </b>
+
+              <a>{{ user.last_login || "Chưa từng đăng nhập"}}</a>
+            </p>
+            <p>
+              <b>Tình trạng </b>
+
+              <a>{{ user.status||"Không rõ" }}</a>
+            </p>
+          </mat-card-content>
+        </div>
+      </div>
+    </mat-card>
+
+
+  </div>
+</div>

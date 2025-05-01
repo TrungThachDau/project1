@@ -1,0 +1,37 @@
+<h2 mat-dialog-title>Thêm dự án mới</h2>
+<form class="add-project-form">
+<mat-dialog-content class="mat-typography">
+
+    <mat-form-field class="add-project-full-width">
+      <mat-label>Tên dự án</mat-label>
+      <input matInput placeholder="Vd. Dự án A">
+    </mat-form-field>
+    <mat-form-field class="add-project-full-width">
+      <mat-label>Địa chỉ</mat-label>
+      <input matInput placeholder="Vd. Dự án A">
+    </mat-form-field>
+    <mat-form-field class="add-project-full-width">
+      <mat-label>Mô tả</mat-label>
+      <input matInput placeholder="Vd. Dự án A">
+    </mat-form-field>
+    <mat-form-field class="add-project-full-width">
+      <mat-label>Ngày bắt đầu</mat-label>
+      <input matInput [matDatepicker]="picker1">
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+      <mat-datepicker #picker1></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field class="add-project-full-width">
+      <mat-label>Ngày kết thúc</mat-label>
+      <input matInput [matDatepicker]="picker2">
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+      <mat-datepicker #picker2></mat-datepicker>
+    </mat-form-field>
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Hủy</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Xác nhận</button>
+</mat-dialog-actions>
+</form>

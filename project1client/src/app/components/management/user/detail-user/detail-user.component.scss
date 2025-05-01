@@ -1,0 +1,68 @@
+
+.example-card {
+  max-width: 100%;
+  display: flex;
+}
+
+.example-header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+  width: 100px;
+  height: 100px;
+}
+.card-container {
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.example-spacer {
+  flex: 1 1 auto;
+}
+mat-toolbar{
+
+  padding: 0;
+
+}
+.avatar-card {
+  flex: 1 1 50px; /* Đảm bảo avatar-card chiếm tối thiểu 300px */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+  padding-bottom:20px;
+}
+
+.content-card {
+  display: flex;
+  align-items: center;     /* Căn giữa theo chiều dọc */
+
+  flex: 1 1 300px; /* Đảm bảo content-card chiếm tối thiểu 300px */
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+}
+
+.example-header-image {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background-color: #ccc;
+}
+
+.title {
+  text-align: center;
+  font-weight:500;
+}
+.subtitle{
+  text-align: center;
+  font-weight: normal;
+  color: #78829d;
+  text-decoration: none;
+}
+
+
+
+

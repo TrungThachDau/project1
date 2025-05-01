@@ -1,0 +1,27 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+/* Nếu bạn muốn thay đổi màu khi button được hover */
+::ng-deep .mat-button {
+  color: #ff5722 !important; /* Màu chữ bạn muốn */
+}
+.spinner-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px; /* Khoảng cách giữa spinner và văn bản */
+  padding: 20px; /* Khoảng đệm xung quanh */
+}
+
+.processing-text {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #555; /* Màu xám nhạt cho văn bản */
+  text-decoration: none; /* Bỏ gạch chân của thẻ a */
+}
+
+.mat-spinner {
+  color: #3f51b5; /* Màu chính cho spinner (primary color) */
+}
+
