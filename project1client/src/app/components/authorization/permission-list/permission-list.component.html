@@ -11,22 +11,24 @@
     <div class="table-user">
       <div class="toolbar">
         <input [formControl]="search" class="input-search" type="search" placeholder="Tìm quyền" aria-label="Tìm người dùng">
-<!--        <button mat-flat-button routerLink="/user-management/add">Thêm người dùng mới</button>-->
+        <!--        <button mat-flat-button routerLink="/user-management/add">Thêm người dùng mới</button>-->
       </div>
       <table class="table">
         <thead>
-        <tr>
-          <th scope="col" class="uid-column">MÃ QUYỀN</th>
-          <th scope="col">TÊN</th>
-          <th scope="col" style="width:50%">MÔ TẢ</th>
-        </tr>
+          <tr>
+            <th scope="col" class="uid-column">MÃ QUYỀN</th>
+            <th scope="col">TÊN</th>
+            <th scope="col" style="width:50%">MÔ TẢ</th>
+          </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let permission of filteredPermissions">
-          <td class="uid-column">{{permission.id_permission}}</td>
-          <td>{{permission.permission_name}}</td>
-          <td>{{permission.description}}</td>
-        </tr>
+          @for (permission of filteredPermissions; track permission) {
+            <tr>
+              <td class="uid-column">{{permission.id_permission}}</td>
+              <td>{{permission.permission_name}}</td>
+              <td>{{permission.description}}</td>
+            </tr>
+          }
         </tbody>
       </table>
     </div>

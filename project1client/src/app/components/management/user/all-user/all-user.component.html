@@ -1,7 +1,7 @@
 <app-navbar></app-navbar>
 <div class="container-fluid">
   <div class="list-section">
-   <app-user-list-section></app-user-list-section>
+    <app-user-list-section></app-user-list-section>
   </div>
   <div class="content-section">
     <mat-toolbar class="toolbar2">
@@ -25,37 +25,37 @@
           </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let user of filteredUsers">
-          <td><p class="name" routerLink="/management/user/{{user.id_user}}">{{user.name}}
-            <br/>
-            <a class="email">{{user.email}}</a></p>
-
-            </td>
-
-          <td>{{user.role.name_role}}</td>
-          <td>
-            <div class="status">
-              <b>{{ user.last_login ||"Chưa từng đăng nhập"}}</b>
-            </div>
-          </td>
-          <td>
-            <div class="status">
-              <b>{{ user.status ||"Không rõ"}}</b>
-            </div>
-          </td>
-          <td>
-            <button mat-stroked-button [matMenuTriggerFor]="menu">
-              <mat-icon>arrow_drop_down</mat-icon>
-              <a>Hành động</a>
-            </button>
-            <mat-menu #menu="matMenu">
-              <button mat-menu-item routerLink="/management/user/{{user.id_user}}">Xem</button>
-              <button mat-menu-item routerLink="/management/user/edit/{{user.id_user}}">Sửa</button>
-              <button mat-menu-item disabled>Xóa</button>
-              <button mat-menu-item disabled>Chặn</button>
-            </mat-menu>
-          </td>
-        </tr>
+          @for (user of filteredUsers; track user) {
+            <tr>
+              <td><p class="name" routerLink="/management/user/{{user.id_user}}">{{user.name}}
+                <br/>
+                <a class="email">{{user.email}}</a></p>
+              </td>
+              <td>{{user.role.name_role}}</td>
+              <td>
+                <div class="status">
+                  <b>{{ user.last_login ||"Chưa từng đăng nhập"}}</b>
+                </div>
+              </td>
+              <td>
+                <div class="status">
+                  <b>{{ user.status ||"Không rõ"}}</b>
+                </div>
+              </td>
+              <td>
+                <button mat-stroked-button [matMenuTriggerFor]="menu">
+                  <mat-icon>arrow_drop_down</mat-icon>
+                  <a>Hành động</a>
+                </button>
+                <mat-menu #menu="matMenu">
+                  <button mat-menu-item routerLink="/management/user/{{user.id_user}}">Xem</button>
+                  <button mat-menu-item routerLink="/management/user/edit/{{user.id_user}}">Sửa</button>
+                  <button mat-menu-item disabled>Xóa</button>
+                  <button mat-menu-item disabled>Chặn</button>
+                </mat-menu>
+              </td>
+            </tr>
+          }
         </tbody>
       </table>
     </div>

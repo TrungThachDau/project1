@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {NavbarComponent} from "../../../navbar/navbar.component";
-import {NgForOf} from "@angular/common";
+
 import {RouterLink} from "@angular/router";
 import {MatFormFieldModule, MatLabel} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
@@ -14,17 +14,16 @@ import {MatToolbarModule} from "@angular/material/toolbar";
 @Component({
     selector: 'app-add-role',
     imports: [
-        NavbarComponent,
-        NgForOf,
-        RouterLink,
-        MatFormFieldModule,
-        MatInputModule,
-        MatLabel,
-        MatButtonModule,
-        ReactiveFormsModule,
-        UserListSectionComponent,
-        MatToolbarModule
-    ],
+    NavbarComponent,
+    RouterLink,
+    MatFormFieldModule,
+    MatInputModule,
+    MatLabel,
+    MatButtonModule,
+    ReactiveFormsModule,
+    UserListSectionComponent,
+    MatToolbarModule
+],
     templateUrl: './add-role.component.html',
     styleUrl: './add-role.component.scss'
 })

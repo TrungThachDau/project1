@@ -2,7 +2,7 @@ import {Component, inject, OnInit} from '@angular/core';
 import {NavbarComponent} from "../../navbar/navbar.component";
 import {RoleService} from "../../../services/role.service";
 import {RouterLink} from "@angular/router";
-import {NgForOf} from "@angular/common";
+
 import {DeleteSubmitComponent} from "../../delete-submit/delete-submit.component";
 import {MatDialog} from "@angular/material/dialog";
 import {UserListSectionComponent} from "../../management/list-section/user-list-section.component";
@@ -16,16 +16,15 @@ import {debounceTime} from "rxjs";
 @Component({
     selector: 'app-role-list',
     imports: [
-        NavbarComponent,
-        RouterLink,
-        NgForOf,
-        UserListSectionComponent,
-        MatButtonModule,
-        MatIconModule,
-        MatMenuModule,
-        MatToolbarModule,
-        ReactiveFormsModule,
-    ],
+    NavbarComponent,
+    RouterLink,
+    UserListSectionComponent,
+    MatButtonModule,
+    MatIconModule,
+    MatMenuModule,
+    MatToolbarModule,
+    ReactiveFormsModule
+],
     templateUrl: './role-list.component.html',
     styleUrl: './role-list.component.scss'
 })

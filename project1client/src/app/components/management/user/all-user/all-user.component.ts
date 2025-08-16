@@ -11,7 +11,7 @@ import {
 import {MatListModule} from "@angular/material/list";
 import {UserListSectionComponent} from "../../list-section/user-list-section.component";
 import {UserService} from "../../../../services/user.service";
-import {CommonModule} from "@angular/common";
+
 import {RouterLink, RouterLinkActive} from "@angular/router";
 import {MatButtonModule, MatFabButton} from "@angular/material/button";
 import {MatFormFieldModule, MatLabel} from "@angular/material/form-field";
@@ -28,30 +28,29 @@ import {SpinnerService} from "../../../../services/spinner.service";
 @Component({
     selector: 'app-all-user',
     imports: [
-        NavbarComponent,
-        MatHeaderCell,
-        MatCell,
-        MatHeaderRow,
-        MatRow,
-        MatColumnDef,
-        MatTableModule,
-        MatListModule,
-        UserListSectionComponent,
-        CommonModule,
-        RouterLink,
-        MatButtonModule,
-        MatFormFieldModule,
-        MatSelectModule,
-        MatOptionModule,
-        MatLabel,
-        MatInput,
-        MatIconModule,
-        MatMenuModule,
-        RouterLinkActive,
-        MatFabButton,
-        MatToolbarModule,
-        ReactiveFormsModule
-    ],
+    NavbarComponent,
+    MatHeaderCell,
+    MatCell,
+    MatHeaderRow,
+    MatRow,
+    MatColumnDef,
+    MatTableModule,
+    MatListModule,
+    UserListSectionComponent,
+    RouterLink,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatOptionModule,
+    MatLabel,
+    MatInput,
+    MatIconModule,
+    MatMenuModule,
+    RouterLinkActive,
+    MatFabButton,
+    MatToolbarModule,
+    ReactiveFormsModule
+],
     templateUrl: './all-user.component.html',
     styleUrl: './all-user.component.scss'
 })

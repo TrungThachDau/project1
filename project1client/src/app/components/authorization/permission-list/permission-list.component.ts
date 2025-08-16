@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {NavbarComponent} from "../../navbar/navbar.component";
 import {AuthorizationService} from "../../../services/authorization.service";
-import {NgForOf} from "@angular/common";
+
 import {UserListSectionComponent} from "../../management/list-section/user-list-section.component";
 import {MatButtonModule} from "@angular/material/button";
 import {RouterLink} from "@angular/router";
@@ -11,14 +11,13 @@ import {FormControl, ReactiveFormsModule} from "@angular/forms";
 @Component({
     selector: 'app-permission-list',
     imports: [
-        NavbarComponent,
-        NgForOf,
-        UserListSectionComponent,
-        MatButtonModule,
-        RouterLink,
-        MatToolbarModule,
-        ReactiveFormsModule
-    ],
+    NavbarComponent,
+    UserListSectionComponent,
+    MatButtonModule,
+    RouterLink,
+    MatToolbarModule,
+    ReactiveFormsModule
+],
     templateUrl: './permission-list.component.html',
     styleUrl: './permission-list.component.scss'
 })

@@ -9,22 +9,21 @@ import {Router, RouterLink} from "@angular/router";
 import {AuthService} from "../../../services/auth.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
-import {NgIf} from "@angular/common";
+
 
 
 @Component({
     selector: 'app-signin',
     imports: [
-        MatCardModule,
-        MatButtonModule,
-        MatFormFieldModule,
-        MatInputModule,
-        ReactiveFormsModule,
-        RouterLink,
-        FormsModule,
-        MatProgressSpinnerModule,
-        NgIf
-    ],
+    MatCardModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    RouterLink,
+    FormsModule,
+    MatProgressSpinnerModule
+],
     templateUrl: './signin.component.html',
     styleUrls: ['./signin.component.scss']
 })

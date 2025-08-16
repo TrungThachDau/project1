@@ -1,7 +1,7 @@
 <app-navbar></app-navbar>
 <div class="container-fluid">
   <div class="list-section">
-  <app-user-list-section></app-user-list-section>
+    <app-user-list-section></app-user-list-section>
   </div>
   <div class="content-section">
     <h6>Thêm người dùng</h6>
@@ -32,9 +32,11 @@
         <mat-form-field class="add-project-full-width">
           <mat-label>Vai trò</mat-label>
           <mat-select formControlName="role" name="role">
-            <mat-option *ngFor="let role of roles" [value]="role.id_role">
-              {{ role.name_role }}
-            </mat-option>
+            @for (role of roles; track role) {
+              <mat-option [value]="role.id_role">
+                {{ role.name_role }}
+              </mat-option>
+            }
           </mat-select>
         </mat-form-field>
         <button mat-flat-button type="submit">Thêm</button>

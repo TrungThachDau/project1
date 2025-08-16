@@ -6,7 +6,7 @@ import {FormsModule} from "@angular/forms";
 import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
 import {MatMenuModule} from "@angular/material/menu";
-import {NgForOf} from "@angular/common";
+
 import {RouterLink} from "@angular/router";
 import {AddProjectComponent} from "./add-project/add-project.component";
 import {MatDialog} from "@angular/material/dialog";
@@ -14,16 +14,15 @@ import {MatDialog} from "@angular/material/dialog";
 @Component({
     selector: 'app-project',
     imports: [
-        NavbarComponent,
-        UserListSectionComponent,
-        MatToolbarModule,
-        FormsModule,
-        MatButtonModule,
-        MatIconModule,
-        MatMenuModule,
-        NgForOf,
-        RouterLink
-    ],
+    NavbarComponent,
+    UserListSectionComponent,
+    MatToolbarModule,
+    FormsModule,
+    MatButtonModule,
+    MatIconModule,
+    MatMenuModule,
+    RouterLink
+],
     templateUrl: './project.component.html',
     styleUrl: './project.component.scss'
 })

@@ -3,18 +3,20 @@
     <section>
       <div class="example-button-row">
         <button mat-button class="custom-button"
-                routerLink="/dashboard">
+          routerLink="/dashboard">
           Trang chủ
         </button>
 
-        <button class="custom-button" *ngFor="let btn of navButton"
-                                        mat-button
-                                        routerLink="{{ btn.path }}"
-                                        routerLinkActive="active-button"
-                                        [routerLinkActiveOptions]="{ exact: false }"
-                [disabled]="!hasPermission(btn.permission)">
-          {{ btn.name }}
-        </button>
+        @for (btn of navButton; track btn) {
+          <button class="custom-button"
+            mat-button
+            routerLink="{{ btn.path }}"
+            routerLinkActive="active-button"
+            [routerLinkActiveOptions]="{ exact: false }"
+            [disabled]="!hasPermission(btn.permission)">
+            {{ btn.name }}
+          </button>
+        }
       </div>
     </section>
 
@@ -22,10 +24,12 @@
 
 
     <span class="example-spacer"></span>
-    <div class="spinner-container" *ngIf="isLoading">
-      <mat-spinner diameter="40"></mat-spinner>
-      <a class="processing-text">{{loadingMessage}}</a>
-    </div>
+    @if (isLoading) {
+      <div class="spinner-container">
+        <mat-spinner diameter="40"></mat-spinner>
+        <a class="processing-text">{{loadingMessage}}</a>
+      </div>
+    }
 
 
     <button mat-button [matMenuTriggerFor]="menu">

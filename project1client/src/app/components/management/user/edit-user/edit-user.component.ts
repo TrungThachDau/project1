@@ -6,7 +6,7 @@ import {MatIcon} from "@angular/material/icon";
 import {MatInput} from "@angular/material/input";
 import {MatOption} from "@angular/material/core";
 import {MatSelect} from "@angular/material/select";
-import {NgForOf} from "@angular/common";
+
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {UserListSectionComponent} from "../../list-section/user-list-section.component";
 import {UserService} from "../../../../services/user.service";
@@ -21,20 +21,19 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 @Component({
     selector: 'app-edit-user',
     imports: [
-        NavbarComponent,
-        MatButton,
-        MatFormField,
-        MatIcon,
-        MatInput,
-        MatLabel,
-        MatOption,
-        MatPrefix,
-        MatSelect,
-        MatSuffix,
-        NgForOf,
-        ReactiveFormsModule,
-        UserListSectionComponent,
-    ],
+    NavbarComponent,
+    MatButton,
+    MatFormField,
+    MatIcon,
+    MatInput,
+    MatLabel,
+    MatOption,
+    MatPrefix,
+    MatSelect,
+    MatSuffix,
+    ReactiveFormsModule,
+    UserListSectionComponent
+],
     templateUrl: './edit-user.component.html',
     styleUrl: './edit-user.component.scss'
 })

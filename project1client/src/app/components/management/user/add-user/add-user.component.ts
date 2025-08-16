@@ -6,7 +6,7 @@ import {MatIconModule} from "@angular/material/icon";
 import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
 import {MatButtonModule} from "@angular/material/button";
-import {CommonModule} from "@angular/common";
+
 import { MatOption } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import {RoleService} from "../../../../services/role.service";
@@ -23,23 +23,22 @@ import {SpinnerService} from "../../../../services/spinner.service";
 @Component({
     selector: 'app-add-user',
     imports: [
-        NavbarComponent,
-        UserListSectionComponent,
-        MatFormField,
-        FormsModule,
-        MatInputModule,
-        MatIconModule,
-        MatLabel,
-        CommonModule,
-        ReactiveFormsModule,
-        MatError,
-        MatOption,
-        MatSelectModule,
-        MatFormFieldModule,
-        MatButtonModule,
-        MatDialogModule,
-        RouterLink
-    ],
+    NavbarComponent,
+    UserListSectionComponent,
+    MatFormField,
+    FormsModule,
+    MatInputModule,
+    MatIconModule,
+    MatLabel,
+    ReactiveFormsModule,
+    MatError,
+    MatOption,
+    MatSelectModule,
+    MatFormFieldModule,
+    MatButtonModule,
+    MatDialogModule,
+    RouterLink
+],
     templateUrl: './add-user.component.html',
     styleUrls: ['./add-user.component.scss']
 })

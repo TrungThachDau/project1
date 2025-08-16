@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import { NavbarComponent } from "../../navbar/navbar.component";
-import {AsyncPipe, NgForOf, NgIf} from "@angular/common";
+import { AsyncPipe } from "@angular/common";
 import {RouterLink} from "@angular/router";
 import {UserListSectionComponent} from "../../management/list-section/user-list-section.component";
 import {MatFormFieldModule} from "@angular/material/form-field";
@@ -20,21 +20,19 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 @Component({
     selector: 'app-authorization',
     imports: [
-        FormsModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatAutocompleteModule,
-        ReactiveFormsModule,
-        AsyncPipe,
-        NavbarComponent,
-        MatCheckboxModule,
-        MatIconModule,
-        NgForOf,
-        NgIf,
-        MatButtonModule,
-        RouterLink,
-        UserListSectionComponent,
-    ],
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatAutocompleteModule,
+    ReactiveFormsModule,
+    AsyncPipe,
+    NavbarComponent,
+    MatCheckboxModule,
+    MatIconModule,
+    MatButtonModule,
+    RouterLink,
+    UserListSectionComponent
+],
     templateUrl: './authorization.component.html',
     styleUrl: './authorization.component.scss'
 })

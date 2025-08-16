@@ -10,18 +10,20 @@
         <mat-form-field class="example-full-width">
           <mat-label>Vai trò</mat-label>
           <input type="text"
-                 placeholder="Chọn một"
-                 aria-label="Vai trò"
-                 matInput
-                 [formControl]="myControl"
-                 [matAutocomplete]="auto">
+            placeholder="Chọn một"
+            aria-label="Vai trò"
+            matInput
+            [formControl]="myControl"
+            [matAutocomplete]="auto">
           <mat-autocomplete
             autoActiveFirstOption
             #auto="matAutocomplete"
             (optionSelected)="onRoleSelected($event)">
-            <mat-option *ngFor="let role of filteredOptions | async" [value]="role.id_role">
-              {{ role.name_role }}
-            </mat-option>
+            @for (role of filteredOptions | async; track role) {
+              <mat-option [value]="role.id_role">
+                {{ role.name_role }}
+              </mat-option>
+            }
           </mat-autocomplete>
         </mat-form-field>
       </form>
@@ -29,17 +31,22 @@
     </div>
     <div class="permission-section">
       <h6>Chọn quyền</h6>
-      <div *ngIf="allPermissions.length>0" class="check-box-permission">
-        <section *ngFor="let permission of allPermissions">
-          <p><mat-checkbox [value]="permission.id_permission" [(ngModel)]="permission.checked">{{ permission.permission_name }}</mat-checkbox></p>
-        </section>
-
-      </div>
+      @if (allPermissions.length>0) {
+        <div class="check-box-permission">
+          @for (permission of allPermissions; track permission) {
+            <section>
+              <p><mat-checkbox [value]="permission.id_permission" [(ngModel)]="permission.checked">{{ permission.permission_name }}</mat-checkbox></p>
+            </section>
+          }
+        </div>
+      }
       <button class="btn-save" mat-flat-button (click)="saveRolePermission()"
-              [disabled]="myControl.value === '' || myControl.value === null|| Number(myControl.value) === 1">Lưu</button>
-      <div *ngIf="allPermissions.length<=0">
-        <p>Đang tải...</p>
-      </div>
+      [disabled]="myControl.value === '' || myControl.value === null|| Number(myControl.value) === 1">Lưu</button>
+      @if (allPermissions.length<=0) {
+        <div>
+          <p>Đang tải...</p>
+        </div>
+      }
 
     </div>
   </div>

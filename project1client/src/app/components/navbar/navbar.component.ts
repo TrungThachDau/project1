@@ -9,12 +9,12 @@ import {Router, RouterLink, RouterLinkActive} from "@angular/router";
 import {MatMenuModule} from "@angular/material/menu";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import { MatSidenavContainer } from '@angular/material/sidenav';
-import {CommonModule} from "@angular/common";
+
 import {MatProgressSpinner} from "@angular/material/progress-spinner";
 import {SpinnerService} from "../../services/spinner.service";
 @Component({
     selector: 'app-navbar',
-    imports: [CommonModule, MatToolbarModule, MatButtonModule, MatIconModule, MatMenu, MatMenuTrigger, MatMenuItem, MatSidenavModule, MatSidenavContainer, RouterLink, RouterLinkActive, MatProgressSpinner],
+    imports: [MatToolbarModule, MatButtonModule, MatIconModule, MatMenu, MatMenuTrigger, MatMenuItem, MatSidenavModule, MatSidenavContainer, RouterLink, RouterLinkActive, MatProgressSpinner],
     templateUrl: './navbar.component.html',
     styleUrl: './navbar.component.scss'
 })
