@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using UserManagementService.Data;
 using UserManagementService.Models;
 using UserManagementService.Services;
+using UserManagementService.Repositories;
 
 namespace UserManagementService.Controllers
 {
@@ -17,7 +18,7 @@ namespace UserManagementService.Controllers
     }
     [Route("api/[controller]")]
     [ApiController]
-    public class AuthController(IAuthService authService) : ControllerBase
+    public class AuthController(IAuthRepo authService) : ControllerBase
     {
         [HttpPost("verify-token")]
         public async Task<IActionResult> VerifyToken([FromBody] string request)

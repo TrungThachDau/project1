@@ -5,3 +5,4 @@ project1server/ApiGateway/bin
 project1client/node_modules
 
 
+/project1server/.vs

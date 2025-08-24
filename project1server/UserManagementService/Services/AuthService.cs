@@ -4,17 +4,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using UserManagementService.Data;
 using UserManagementService.Models;
-
+using UserManagementService.Repositories;
 namespace UserManagementService.Services;
 
-public interface IAuthService 
-{
-    Task<string> VerifyToken(string idToken);
-    Task UpdateLastLogin(string id);
-    Task <UserModel> GetUser([FromHeader] string token);
-    Task<IEnumerable<string>> GetPermission([FromHeader] string token);
-}
-public class AuthService(AppDbContext context) : IAuthService
+
+public class AuthService(AppDbContext context) : IAuthRepo
 {
     public async Task<string> VerifyToken(string idToken)
     {
