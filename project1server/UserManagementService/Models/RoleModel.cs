@@ -9,9 +9,9 @@ namespace UserManagementService.Models
         [Required]
         [Column("id_role")]
         public int id_role { get; set; }
-       
+
         [Column("name_role")]
         public string? name_role { get; set; }
-        public string? description {  get; set; }
+        public string? description { get; set; }
     }
 }

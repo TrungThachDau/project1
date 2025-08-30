@@ -50,7 +50,7 @@ namespace UserManagementService.Controllers
             try
             {
                 await _roleService.UpdateRoleById(id, roleModel);
-                return NoContent(); 
+                return NoContent();
             }
             catch (KeyNotFoundException ex)
             {

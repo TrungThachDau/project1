@@ -175,8 +175,8 @@ namespace UserManagementService.Controllers
         {
             return _context.RolePermissions.Any(e => e.id_role_permission == id);
         }
-        
-        
+
+
     }
 
     public class TokenRequest
