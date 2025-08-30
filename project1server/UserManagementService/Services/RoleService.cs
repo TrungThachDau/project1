@@ -10,10 +10,10 @@ public interface IRoleService
     Task<IEnumerable<RoleModel>> GetRolesAsync();
     Task<IEnumerable<RoleModel>> GetRoleByIdAsync(int id);
     Task<IEnumerable<RoleModel>> UpdateRoleById(int id, RoleModel role);
-    
+
 }
 
-public class RoleService: IRoleService
+public class RoleService : IRoleService
 {
     private readonly AppDbContext _context;
     public RoleService(AppDbContext context)

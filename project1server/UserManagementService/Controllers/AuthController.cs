@@ -38,7 +38,7 @@ namespace UserManagementService.Controllers
             {
                 return NotFound(new { message = ex.Message });
             }
-           
+
         }
         [Authorize]
         [HttpGet("get-user")]

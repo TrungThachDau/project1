@@ -17,7 +17,7 @@ namespace UserManagementService
 
 
             builder.Services.AddDbContext<AppDbContext>(options =>
-                options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"),
+                options.UseNpgsql(builder.Configuration.GetConnectionString("Docker"),
                     options => options.EnableRetryOnFailure()));
 
             FirebaseApp.Create(new AppOptions

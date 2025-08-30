@@ -25,14 +25,14 @@ namespace UserManagementService.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<UserModel>>> GetUsers()
         {
-            return await _context.Users.Include(p=>p.role).ToListAsync();
+            return await _context.Users.Include(p => p.role).ToListAsync();
         }
 
         // GET: api/User/5
         [HttpGet("{id}")]
         public async Task<ActionResult<UserModel>> GetUser(string id)
         {
-            var userModel = await _context.Users.Include(p => p.role).FirstOrDefaultAsync(p=>p.id_user == id);
+            var userModel = await _context.Users.Include(p => p.role).FirstOrDefaultAsync(p => p.id_user == id);
 
             if (userModel == null)
             {
@@ -82,7 +82,7 @@ namespace UserManagementService.Controllers
             {
                 return BadRequest(ModelState); // Xử lý lỗi nếu dữ liệu không hợp lệ
             }
-            
+
             _context.Users.Add(userModel);
             await _context.SaveChangesAsync();
             return CreatedAtAction("GetUser", new { id = userModel.id_user }, userModel);
