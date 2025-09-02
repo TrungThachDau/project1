@@ -4,38 +4,18 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using UserManagementService.Data;
 using UserManagementService.Models;
+using UserManagementService.Repositories;
 
 namespace UserManagementService.Services;
 
-public interface IAuthService
-{
-    Task<string> SignIn(string username, string password);
-    Task<string> VerifyToken(string idToken);
-    Task UpdateLastLogin(string id);
-    Task<UserModel> GetUser([FromHeader] string token);
-    Task<IEnumerable<string>> GetPermission([FromHeader] string token);
-}
-public class AuthService(AppDbContext context) : IAuthService
+public class AuthService(AppDbContext context) : IAuthRepo
 {
 
-    public async Task<string?> SignInAsync(string username, string password)
+    public async Task<string> SignInAsync(string email, string password)
     {
-        if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
-        {
-            return Unauthorized("Invalid username or password.");
-        }
-        var user = await context.Users.AsNoTracking()
-            .Where(u => u.username == username && u.password == password)
-            .FirstOrDefaultAsync();
-
-        if (user == null)
-        {
-            return Unauthorized("Invalid username or password.");
-        }
-
-        // Generate a Firebase token for the user
-        var token = await FirebaseAuth.DefaultInstance.CreateCustomTokenAsync(user.id);
-        return token;
+        // Firebase does not support sign-in with email and password on the server side.
+        // This method should be handled on the client side using Firebase SDKs.
+        throw new NotImplementedException("Sign-in with email and password should be handled on the client side.");
     }
     public async Task<string> VerifyToken(string idToken)
     {
@@ -80,7 +60,9 @@ public class AuthService(AppDbContext context) : IAuthService
             from rp in context.RolePermissions
             join p in context.Permissions on rp.id_permission equals p.id_permission
             where rp.id_role == user.id_role
-            select p.permission_name.Trim()
+            let permissionName = p.permission_name
+            where permissionName != null
+            select permissionName.Trim()
         ).ToListAsync();
 
         return permissions;
