@@ -47,10 +47,6 @@ namespace UserManagementService.Controllers
         {
             //Nhap vao id_role, tim tat ca cac quyen cua role do
             var permission = await _context.RolePermissions.Where(p => p.id_role == id_role).Include(p => p.permission).ToArrayAsync();
-            if (permission == null)
-            {
-                return NotFound("Permission not found.");
-            }
 
             return Ok(permission);
         }

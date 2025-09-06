@@ -20,6 +20,18 @@ namespace UserManagementService.Controllers
     [ApiController]
     public class AuthController(IAuthRepo authService) : ControllerBase
     {
+        [HttpPost("sign-in")]
+        public async Task<IActionResult> SignIn([FromBody] dynamic request)
+        {
+            var query = await authService.SignInAsync(request.email, request.password);
+            if (query is null)
+            {
+                return Unauthorized(new { message = "Invalid email or password" });
+            }
+            return Ok(new { token = query });
+        }
+
+
         [HttpPost("verify-token")]
         public async Task<IActionResult> VerifyToken([FromBody] string request)
         {
