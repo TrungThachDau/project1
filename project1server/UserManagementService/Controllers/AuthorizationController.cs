@@ -90,10 +90,8 @@ namespace UserManagementService.Controllers
         {
             try
             {
-                var tokenRequest = new TokenRequest { IdToken = idToken };
-
                 // Gọi API xác minh token
-                var response = await _httpClient.PostAsJsonAsync("https://localhost:7175/api/auth/verify-token", tokenRequest);
+                var response = await _httpClient.PostAsJsonAsync("https://localhost:7175/api/auth/verify-token", idToken);
                 if (!response.IsSuccessStatusCode)
                 {
                     return Unauthorized(new { message = "Token không hợp lệ." });
@@ -113,7 +111,7 @@ namespace UserManagementService.Controllers
                     _context.RolePermissions.RemoveRange(existingRolePermissions);
                 }
 
-                // Nếu dữ liệu quyền không rỗng, thêm các quyền mới
+                // Nếu dữ liệu quy���n không rỗng, thêm các quyền mới
                 if (rolePermissionModels != null && rolePermissionModels.Any())
                 {
                     foreach (var rolePermissionModel in rolePermissionModels)
@@ -181,6 +179,6 @@ namespace UserManagementService.Controllers
 
     public class TokenRequest
     {
-        public string IdToken { get; set; }
+        public string IdToken { get; set; } = string.Empty;
     }
 }

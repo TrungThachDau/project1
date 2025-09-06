@@ -8,7 +8,7 @@ namespace UserManagementService.Models
     {
         [Key]
         [Required]
-        public string id_user { get; set; }
+        public string id_user { get; set; } = string.Empty;
         public string? name { get; set; }
         public string? email { get; set; }
         public string? password { get; set; }

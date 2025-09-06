@@ -1,4 +1,5 @@
 using FirebaseAdmin.Auth;
+using Microsoft.AspNetCore.Http;
 
 namespace UserManagementService.Services;
 
@@ -6,19 +7,20 @@ public class FirebaseAuthenticationMiddleware(RequestDelegate next)
 {
     public async Task InvokeAsync(HttpContext context)
     {
-        var token = context.Request.Headers["Authorization"].ToString().Replace("Bearer ", "");
+        var authHeader = context.Request.Headers["Authorization"].ToString();
+        var token = authHeader.StartsWith("Bearer ", StringComparison.OrdinalIgnoreCase)
+            ? authHeader.Substring("Bearer ".Length).Trim()
+            : string.Empty;
+
         if (!string.IsNullOrEmpty(token))
         {
-
             try
             {
-                FirebaseToken decodedToken = await FirebaseAuth.DefaultInstance.VerifyIdTokenAsync(token);
-                string uid = decodedToken.Uid;
-                await next(context);
+                await FirebaseAuth.DefaultInstance.VerifyIdTokenAsync(token);
             }
-            catch (Exception ex)
+            catch
             {
-                context.Response.StatusCode = 401;
+                context.Response.StatusCode = StatusCodes.Status401Unauthorized;
                 await context.Response.WriteAsync("Unauthorized");
                 return;
             }

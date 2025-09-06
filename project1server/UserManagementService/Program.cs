@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using UserManagementService.Services;
+using UserManagementService.Repositories;
 
 namespace UserManagementService
 {
@@ -39,6 +40,7 @@ namespace UserManagementService
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
             builder.Services.AddHttpClient();
+            builder.Services.AddScoped<IAuthRepo, AuthService>();
             builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
                 {
@@ -54,7 +56,17 @@ namespace UserManagementService
                         ValidAudience = "project1-2b957",
                         //IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("your_secret_key"))
                     };
-                });
+                }).AddCookie("JwtCookie", options =>
+            {
+                options.Cookie.Name = "jwt";
+                options.Cookie.HttpOnly = true;
+                options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+                options.Events.OnRedirectToLogin = context =>
+                {
+                    context.Response.StatusCode = 401;
+                    return Task.CompletedTask;
+                };
+            });
             var app = builder.Build();
 
             if (app.Environment.IsDevelopment())
@@ -64,8 +76,9 @@ namespace UserManagementService
             }
             app.UseHttpsRedirection();
             app.UseCors("AllowAllOrigins");
-            app.UseAuthorization();
+            app.UseAuthentication();
             app.UseMiddleware<FirebaseAuthenticationMiddleware>();
+            app.UseAuthorization();
             app.MapControllers();
 
             app.Run();
