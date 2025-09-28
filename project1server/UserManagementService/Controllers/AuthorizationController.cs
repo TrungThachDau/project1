@@ -1,12 +1,14 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Json;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using UserManagementService.Data;
 using UserManagementService.Models;
+
 namespace UserManagementService.Controllers
 {
     [Route("api/[controller]")]
@@ -22,14 +24,18 @@ namespace UserManagementService.Controllers
             _httpClient = httpClient;
         }
 
-        // GET: api/Authorization
+        /// <summary>
+        /// Lấy toàn bộ danh sách quyền theo vai trò trong hệ thống.
+        /// </summary>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<RolePermissionModel>>> GetRolePermissions()
         {
             return await _context.RolePermissions.ToListAsync();
         }
 
-        // GET: api/Authorization/5
+        /// <summary>
+        /// Lấy chi tiết quyền theo ID.
+        /// </summary>
         [HttpGet("{id}")]
         public async Task<ActionResult<RolePermissionModel>> GetRolePermissionModel(int id)
         {
@@ -42,17 +48,24 @@ namespace UserManagementService.Controllers
 
             return rolePermissionModel;
         }
+
+        /// <summary>
+        /// Lấy toàn bộ quyền gắn với một vai trò.
+        /// </summary>
         [HttpGet("get-permission/{id_role}")]
         public async Task<ActionResult<RolePermissionModel>> GetPermission(int id_role)
         {
-            //Nhap vao id_role, tim tat ca cac quyen cua role do
-            var permission = await _context.RolePermissions.Where(p => p.id_role == id_role).Include(p => p.permission).ToArrayAsync();
+            var permission = await _context.RolePermissions
+                .Where(p => p.id_role == id_role)
+                .Include(p => p.permission)
+                .ToArrayAsync();
 
             return Ok(permission);
         }
 
-        // PUT: api/Authorization/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        /// <summary>
+        /// Cập nhật quyền theo ID.
+        /// </summary>
         [HttpPut("{id}")]
         public async Task<IActionResult> PutRolePermissionModel(int id, RolePermissionModel rolePermissionModel)
         {
@@ -73,41 +86,44 @@ namespace UserManagementService.Controllers
                 {
                     return NotFound();
                 }
-                else
-                {
-                    throw;
-                }
+
+                throw;
             }
 
             return NoContent();
         }
+
+        /// <summary>
+        /// Cập nhật toàn bộ quyền của vai trò sau khi xác thực token.
+        /// </summary>
         [HttpPut("update-role-permission/{id_role}")]
         public async Task<IActionResult> UpdateRolePermission(int id_role, RolePermissionModel[] rolePermissionModels, string idToken)
         {
+            if (string.IsNullOrWhiteSpace(idToken))
+            {
+                return Unauthorized(new { message = "Thiếu token xác thực." });
+            }
+
             try
             {
-                // Gọi API xác minh token
-                var response = await _httpClient.PostAsJsonAsync("https://localhost:7175/api/auth/verify-token", idToken);
+                var response = await _httpClient.PostAsJsonAsync(
+                    "https://localhost:7175/api/auth/verify-token",
+                    new { token = idToken });
+
                 if (!response.IsSuccessStatusCode)
                 {
                     return Unauthorized(new { message = "Token không hợp lệ." });
                 }
+
                 var existingRolePermissions = await _context.RolePermissions
-                                             .Where(p => p.id_role == id_role)
-                                             .ToListAsync();
+                    .Where(p => p.id_role == id_role)
+                    .ToListAsync();
 
-                if (existingRolePermissions == null)
-                {
-                    throw new Exception("Failed to retrieve role permissions from database.");
-                }
-
-                // Xóa quyền hiện có
                 if (existingRolePermissions.Any())
                 {
                     _context.RolePermissions.RemoveRange(existingRolePermissions);
                 }
 
-                // Nếu dữ liệu quy���n không rỗng, thêm các quyền mới
                 if (rolePermissionModels != null && rolePermissionModels.Any())
                 {
                     foreach (var rolePermissionModel in rolePermissionModels)
@@ -124,7 +140,6 @@ namespace UserManagementService.Controllers
                     }
                 }
 
-                // Lưu các thay đổi vào cơ sở dữ liệu
                 await _context.SaveChangesAsync();
 
                 return NoContent();
@@ -135,11 +150,9 @@ namespace UserManagementService.Controllers
             }
         }
 
-
-
-
-        // POST: api/Authorization
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        /// <summary>
+        /// Thêm quyền mới.
+        /// </summary>
         [HttpPost]
         public async Task<ActionResult<RolePermissionModel>> PostRolePermissionModel(RolePermissionModel rolePermissionModel)
         {
@@ -149,7 +162,9 @@ namespace UserManagementService.Controllers
             return CreatedAtAction("GetRolePermissionModel", new { id = rolePermissionModel.id_role_permission }, rolePermissionModel);
         }
 
-        // DELETE: api/Authorization/5
+        /// <summary>
+        /// Xóa quyền theo ID.
+        /// </summary>
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteRolePermissionModel(int id)
         {
@@ -169,12 +184,6 @@ namespace UserManagementService.Controllers
         {
             return _context.RolePermissions.Any(e => e.id_role_permission == id);
         }
-
-
-    }
-
-    public class TokenRequest
-    {
-        public string IdToken { get; set; } = string.Empty;
     }
 }
+

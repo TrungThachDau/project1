@@ -20,9 +20,17 @@ namespace UserManagementService.Controllers
     [ApiController]
     public class AuthController(IAuthRepo authService) : ControllerBase
     {
+        public record SignInRequest(string email, string password);
+        public record TokenRequest(string token);
+
         [HttpPost("sign-in")]
-        public async Task<IActionResult> SignIn([FromBody] dynamic request)
+        public async Task<IActionResult> SignIn([FromBody] SignInRequest? request)
         {
+            if (request is null || string.IsNullOrWhiteSpace(request.email) || string.IsNullOrWhiteSpace(request.password))
+            {
+                return BadRequest(new { message = "Email and password are required" });
+            }
+
             var query = await authService.SignInAsync(request.email, request.password);
             if (query is null)
             {
@@ -33,9 +41,13 @@ namespace UserManagementService.Controllers
 
 
         [HttpPost("verify-token")]
-        public async Task<IActionResult> VerifyToken([FromBody] string request)
+        public async Task<IActionResult> VerifyToken([FromBody] TokenRequest? request)
         {
-            var query = await authService.VerifyToken(request);
+            if (request is null || string.IsNullOrWhiteSpace(request.token))
+            {
+                return BadRequest(new { message = "Token is required" });
+            }
+            var query = await authService.VerifyToken(request.token);
             return Ok(new { message = "Token verified successfully", uid = query });
         }
         [Authorize]

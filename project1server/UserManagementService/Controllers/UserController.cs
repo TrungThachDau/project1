@@ -12,27 +12,20 @@ namespace UserManagementService.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UserController : ControllerBase
+    public class UserController(AppDbContext context) : ControllerBase
     {
-        private readonly AppDbContext _context;
-
-        public UserController(AppDbContext context)
-        {
-            _context = context;
-        }
-
         // GET: api/User
         [HttpGet]
         public async Task<ActionResult<IEnumerable<UserModel>>> GetUsers()
         {
-            return await _context.Users.Include(p => p.role).ToListAsync();
+            return await context.Users.Include(p => p.role).ToListAsync();
         }
 
         // GET: api/User/5
         [HttpGet("{id}")]
         public async Task<ActionResult<UserModel>> GetUser(string id)
         {
-            var userModel = await _context.Users.Include(p => p.role).FirstOrDefaultAsync(p => p.id_user == id);
+            var userModel = await context.Users.Include(p => p.role).FirstOrDefaultAsync(p => p.id_user == id);
 
             if (userModel == null)
             {
@@ -52,11 +45,11 @@ namespace UserManagementService.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(userModel).State = EntityState.Modified;
+            context.Entry(userModel).State = EntityState.Modified;
 
             try
             {
-                await _context.SaveChangesAsync();
+                await context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -83,8 +76,8 @@ namespace UserManagementService.Controllers
                 return BadRequest(ModelState); // Xử lý lỗi nếu dữ liệu không hợp lệ
             }
 
-            _context.Users.Add(userModel);
-            await _context.SaveChangesAsync();
+            context.Users.Add(userModel);
+            await context.SaveChangesAsync();
             return CreatedAtAction("GetUser", new { id = userModel.id_user }, userModel);
         }
 
@@ -92,21 +85,21 @@ namespace UserManagementService.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteUserModel(int id)
         {
-            var userModel = await _context.Users.FindAsync(id);
+            var userModel = await context.Users.FindAsync(id);
             if (userModel == null)
             {
                 return NotFound();
             }
 
-            _context.Users.Remove(userModel);
-            await _context.SaveChangesAsync();
+            context.Users.Remove(userModel);
+            await context.SaveChangesAsync();
 
             return NoContent();
         }
 
         private bool UserModelExists(string id)
         {
-            return _context.Users.Any(e => e.id_user == id);
+            return context.Users.Any(e => e.id_user == id);
         }
     }
 }

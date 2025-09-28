@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using UserManagementService.Models;
 
 namespace UserManagementService.Repositories
