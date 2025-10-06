@@ -51,6 +51,7 @@ export class AuthService {
     try {
       sessionStorage.removeItem('authToken');
       sessionStorage.removeItem('uid');
+      sessionStorage.removeItem('permissions');
       await signOut(this.auth);
     } catch (error) {
       console.error(error);
